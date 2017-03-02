@@ -23,15 +23,15 @@ public class WordsHistogram {
                 for (File f : fileMan.getFiles()) {
                     if (f.isFile()) {
                         System.out.println("file: " + f);
-                        fileCmpMan.add(f, new HistogramNoCount(f).getHist());
+                        fileCmpMan.add(f);
                     }
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        fileCmpMan.startComparingAll();
         System.out.println("Parsing files complete in time: " + (System.currentTimeMillis() - startTime) + " milis");
 
     }

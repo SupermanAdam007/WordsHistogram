@@ -8,7 +8,7 @@ import java.io.File;
  */
 public class FilesManager {
 
-    private File dir;
+    private final File dir;
     private boolean isDir = false;
     private File[] files;
 
