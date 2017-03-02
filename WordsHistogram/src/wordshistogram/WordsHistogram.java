@@ -15,44 +15,31 @@ public class WordsHistogram {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
-        /*if (args.length == 0) {
-            System.out.println("You must enter a path to dir as argument...");
-            return;
-        }
-
-        System.out.println("Path to dir: " + args[0]);*/
-        ArrayList<HistogramNoCount> hists = new ArrayList<>();
+        FilesManager fileMan = new FilesManager(new File("c:\\Users\\Adam\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\"));
+        FilesComparingManager fileCmpMan = new FilesComparingManager();
         try {
-//            File dir = new File(args[0]);
-            File dir = new File("C:\\Users\\pavlat\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files");
-            if (dir.isDirectory()) {
-                for (File f : dir.listFiles()) {
+            if (fileMan.isDir()) {
+                System.out.println("Starting first scan of files...");
+                for (File f : fileMan.getFiles()) {
                     if (f.isFile()) {
                         System.out.println("file: " + f);
-                        //HistogramNoCount hist = new HistogramNoCount(f);
-                        //hist.saveHistToFile();
-                        hists.add(new HistogramNoCount(f));
+                        fileCmpMan.add(f, new HistogramNoCount(f).getHist());
                     }
                 }
-                compareTwoHistograms(hists.get(0), hists.get(1));
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         System.out.println("Parsing files complete in time: " + (System.currentTimeMillis() - startTime) + " milis");
-        
+
     }
-    
-    public static ArrayList<String> compareTwoHistograms(HistogramNoCount hist1, HistogramNoCount hist2) {
-        ArrayList<String> same = new ArrayList<>();
-        for (String s : hist1.getHist()) {
-            if (hist2.getHist().contains(s)) {
-                same.add(s);
-                System.out.println(s);
-            }
+
+    public static void printArrayList(ArrayList<String> arrList) {
+        for (String s : arrList) {
+            System.out.println(s);
         }
-        return same;
     }
-    
+
 }

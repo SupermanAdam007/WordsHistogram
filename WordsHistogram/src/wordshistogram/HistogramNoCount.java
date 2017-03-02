@@ -21,7 +21,7 @@ public class HistogramNoCount {
 
     public HistogramNoCount(File f) {
         this.f = f;
-        this.hist = new HashSet<String>();
+        this.hist = new HashSet<>();
         makeHist();
     }
 
@@ -31,13 +31,19 @@ public class HistogramNoCount {
             buffr = new BufferedReader(new FileReader(f));
             String line;
             String[] split;
-            int[] len = new int[]{5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+            //int[] len = new int[]{5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+            int[] len = new int[]{20, 30, 40, 50, 60};
             while ((line = buffr.readLine()) != null) { //every row from 4 to 10 letters substrings
+                line = line.toUpperCase();
                 for (int i : len) {
                     for (int j = 0; j < line.length() - i; j += i) {
-                        String resLine;
-                        if ((resLine = line.substring(j, j + i).trim()).length() >= len[0]) {
-                            hist.add(resLine);
+                        for (int k = 0; k < i / 2; k++) {
+                            String resResLine = line.substring(Math.max(j + k, 0), Math.min(j + i + k, line.length())).trim();
+                            String resLine;
+                            //System.out.println(resResLine);
+                            if (((resLine = resResLine).length() >= len[0]) & !hist.contains(resLine)) {
+                                hist.add(resLine);
+                            }
                         }
                     }
                 }
@@ -58,7 +64,6 @@ public class HistogramNoCount {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
     }
 
     public void printRes() {
