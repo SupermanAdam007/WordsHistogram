@@ -1,6 +1,7 @@
 package wordshistogram;
 
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,31 +21,38 @@ public class WordsHistogram {
         }
 
         System.out.println("Path to dir: " + args[0]);*/
+        ArrayList<HistogramNoCount> hists = new ArrayList<>();
         try {
 //            File dir = new File(args[0]);
-            File dir = new File("C:\\Users\\Adam\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files");
+            File dir = new File("C:\\Users\\pavlat\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files");
             if (dir.isDirectory()) {
                 for (File f : dir.listFiles()) {
                     if (f.isFile()) {
                         System.out.println("file: " + f);
-                        Histogram hist = new Histogram(f);
-                        hist.saveHistToFile(0, 999);
-                        
-                        /*if (args[1].length() < 2) {
-                            System.out.println("From 0 to 999: ");
-                            System.out.println(hist.printRange(0, 999));
-                        } else {
-                            System.out.println("From " + args[1] + " to " + args[2] + ": ");
-                            System.out.println(hist.printRange(Integer.valueOf(args[1]), Integer.valueOf(args[2])));
-                        }*/
+                        //HistogramNoCount hist = new HistogramNoCount(f);
+                        //hist.saveHistToFile();
+                        hists.add(new HistogramNoCount(f));
                     }
                 }
+                compareTwoHistograms(hists.get(0), hists.get(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        System.out.println("In time: " + (System.currentTimeMillis() - startTime) + " milis");
+        
+        System.out.println("Parsing files complete in time: " + (System.currentTimeMillis() - startTime) + " milis");
+        
     }
-
+    
+    public static ArrayList<String> compareTwoHistograms(HistogramNoCount hist1, HistogramNoCount hist2) {
+        ArrayList<String> same = new ArrayList<>();
+        for (String s : hist1.getHist()) {
+            if (hist2.getHist().contains(s)) {
+                same.add(s);
+                System.out.println(s);
+            }
+        }
+        return same;
+    }
+    
 }
