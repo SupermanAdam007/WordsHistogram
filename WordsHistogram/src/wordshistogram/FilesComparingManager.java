@@ -4,7 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -14,11 +16,11 @@ import java.util.Set;
 public class FilesComparingManager {
 
     private final Set<OneFile> myFiles;
-    private Set<File[]> pairs;
+    private final Map<String, String> pairs;
 
     public FilesComparingManager() {
         myFiles = new HashSet<>();
-        pairs = new HashSet<>();
+        pairs = new HashMap<>();
     }
 
     public void add(File f) {
@@ -47,13 +49,26 @@ public class FilesComparingManager {
             for (OneFile myFile1 : myFiles) {
                 if (myFile.equals(myFile1)) {
                     continue;
-                } //else if (pairs.size() < 2) {
+                }
+                if (pairs.size() > 0) {
+                    if (pairs.containsKey(myFile.getFile().getName())
+                            && pairs.get(myFile.getFile().getName()).equals(myFile1.getFile().getName())) {
+                        continue;
+                    }
+                    if (pairs.containsKey(myFile1.getFile().getName())
+                            && pairs.get(myFile1.getFile().getName()).equals(myFile.getFile().getName())) {
+                        continue;
+                    }
+                }
+                //System.out.println("OK");
                 System.out.println("Comparing:");
                 System.out.println(" File 1: " + myFile.getFile().getName());
                 System.out.println(" File 2: " + myFile1.getFile().getName());
-                //pairs.add(new File[]{myFile.getFile(), myFile1.getFile()});
-                compareTwoHistograms(myFile.getHist(), myFile1.getHist());
-                //}
+                ArrayList<String> simil = compareTwoHistograms(myFile.getHist(), myFile1.getHist());
+                myFile.addCmp(myFile1, simil);
+                myFile1.addCmp(myFile, simil);
+                pairs.put(myFile.getFile().getName(), myFile1.getFile().getName());
+                pairs.put(myFile1.getFile().getName(), myFile.getFile().getName());
             }
         }
     }

@@ -15,8 +15,14 @@ public class WordsHistogram {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
-        FilesManager fileMan = new FilesManager(new File("c:\\Users\\Adam\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\"));
+        String path = "c:\\Users\\pavlat\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\";
+        FilesManager fileMan = new FilesManager(new File(path));
         FilesComparingManager fileCmpMan = new FilesComparingManager();
+
+        System.out.println("Path: " + path);
+        System.out.println("Number of files: " + fileMan.getNumOfFiles());
+        System.out.println("For fully connected graph is number of pairs: " + fileMan.getNumOfConnections());
+        
         try {
             if (fileMan.isDir()) {
                 System.out.println("Starting first scan of files...");

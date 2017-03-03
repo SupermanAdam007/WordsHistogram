@@ -35,4 +35,12 @@ public class FilesManager {
         return isDir;
     }
 
+    public int getNumOfFiles() {
+        return this.files.length;
+    }
+
+    public int getNumOfConnections() {
+        return this.files.length * (this.files.length - 1) / 2;
+    }
+
 }
