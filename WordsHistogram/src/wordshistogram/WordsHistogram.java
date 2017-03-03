@@ -38,7 +38,7 @@ public class WordsHistogram {
         }
 
         fileCmpMan.startComparingFilePairs();
-        fileCmpMan.startCreatingClasses();
+        fileCmpMan.startComparingEdges();
         System.out.println("Parsing files complete in time: " + (System.currentTimeMillis() - startTime) + " milis");
 
     }

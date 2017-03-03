@@ -16,12 +16,12 @@ import java.util.Set;
 public class FilesComparingManager {
 
     private final Set<OneFile> myFiles;
-    private final Map<String, String> pairs;
+    private final ArrayList<String[]> pairs;
     private final EdgesCollector edges;
 
     public FilesComparingManager() {
         myFiles = new HashSet<>();
-        pairs = new HashMap<>();
+        pairs = new ArrayList<>();
         edges = new EdgesCollector();
     }
 
@@ -52,17 +52,24 @@ public class FilesComparingManager {
                 if (myFile.equals(myFile1)) {
                     continue;
                 }
+                boolean isThere = false;
                 if (pairs.size() > 0) {
-                    if (pairs.containsKey(myFile.getFile().getName())
-                            && pairs.get(myFile.getFile().getName()).equals(myFile1.getFile().getName())) {
-                        continue;
-                    }
-                    if (pairs.containsKey(myFile1.getFile().getName())
-                            && pairs.get(myFile1.getFile().getName()).equals(myFile.getFile().getName())) {
-                        continue;
+                    for (String[] s : pairs) {
+                        if (s[0].equals(myFile.getFile().getName())
+                                && s[1].equals(myFile1.getFile().getName())) {
+                            isThere = true;
+                        }
+                        if (s[0].equals(myFile1.getFile().getName())
+                                && s[1].equals(myFile1.getFile().getName())) {
+                            isThere = true;
+                        }
                     }
                 }
-                
+
+                if (isThere) {
+                    continue;
+                }
+
                 //System.out.println("OK");
                 System.out.println("Comparing:");
                 System.out.println(" File 1: " + myFile.getFile().getName());
@@ -71,14 +78,25 @@ public class FilesComparingManager {
 
                 edges.addEdge(myFile, myFile1, simil);
 
-                pairs.put(myFile.getFile().getName(), myFile1.getFile().getName());
-                pairs.put(myFile1.getFile().getName(), myFile.getFile().getName());
+                pairs.add(new String[]{myFile.getFile().getName(), myFile1.getFile().getName()});
+                pairs.add(new String[]{myFile1.getFile().getName(), myFile.getFile().getName()});
+
+//                System.out.println("pairs = " + pairs.toString());
+//                System.out.println("");
             }
         }
     }
 
-    public void startCreatingClasses() {
-
+    public void startComparingEdges() {
+        for (Edge edge : edges.getEdges()) {
+            //System.out.println(edge.toString());
+            for (Edge edge1 : edges.getEdges()) {
+                if (!edge.equals(edge1)) {
+//                    System.out.println("-------------");
+//                    System.out.println("delam neco s edgema: " + edge.toString() + edge1.toString());
+                }
+            }
+        }
     }
 
     public static class CustomComparator implements Comparator<String> {
