@@ -17,17 +17,19 @@ public class FilesComparingManager {
 
     private final Set<OneFile> myFiles;
     private final Map<String, String> pairs;
+    private final EdgesCollector edges;
 
     public FilesComparingManager() {
         myFiles = new HashSet<>();
         pairs = new HashMap<>();
+        edges = new EdgesCollector();
     }
 
     public void add(File f) {
         myFiles.add(new OneFile(f));
     }
 
-    public ArrayList<String> compareTwoHistograms(Set<String> hist1, Set<String> hist2) {
+    public static ArrayList<String> compareTwoHistograms(Set<String> hist1, Set<String> hist2) {
         ArrayList<String> same = new ArrayList<>();
         for (String s : hist1) {
             if (hist2.contains(s)) {
@@ -39,12 +41,12 @@ public class FilesComparingManager {
         return sortArrayList(same);
     }
 
-    private ArrayList<String> sortArrayList(ArrayList<String> arrList) {
+    public static ArrayList<String> sortArrayList(ArrayList<String> arrList) {
         Collections.sort(arrList, new CustomComparator());
         return arrList;
     }
 
-    public void startComparingAll() {
+    public void startComparingFilePairs() {
         for (OneFile myFile : myFiles) {
             for (OneFile myFile1 : myFiles) {
                 if (myFile.equals(myFile1)) {
@@ -60,17 +62,23 @@ public class FilesComparingManager {
                         continue;
                     }
                 }
+                
                 //System.out.println("OK");
                 System.out.println("Comparing:");
                 System.out.println(" File 1: " + myFile.getFile().getName());
                 System.out.println(" File 2: " + myFile1.getFile().getName());
                 ArrayList<String> simil = compareTwoHistograms(myFile.getHist(), myFile1.getHist());
-                myFile.addCmp(myFile1, simil);
-                myFile1.addCmp(myFile, simil);
+
+                edges.addEdge(myFile, myFile1, simil);
+
                 pairs.put(myFile.getFile().getName(), myFile1.getFile().getName());
                 pairs.put(myFile1.getFile().getName(), myFile.getFile().getName());
             }
         }
+    }
+
+    public void startCreatingClasses() {
+
     }
 
     public static class CustomComparator implements Comparator<String> {

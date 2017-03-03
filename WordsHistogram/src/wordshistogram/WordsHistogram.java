@@ -22,7 +22,7 @@ public class WordsHistogram {
         System.out.println("Path: " + path);
         System.out.println("Number of files: " + fileMan.getNumOfFiles());
         System.out.println("For fully connected graph is number of pairs: " + fileMan.getNumOfConnections());
-        
+
         try {
             if (fileMan.isDir()) {
                 System.out.println("Starting first scan of files...");
@@ -37,7 +37,8 @@ public class WordsHistogram {
             e.printStackTrace();
         }
 
-        fileCmpMan.startComparingAll();
+        fileCmpMan.startComparingFilePairs();
+        fileCmpMan.startCreatingClasses();
         System.out.println("Parsing files complete in time: " + (System.currentTimeMillis() - startTime) + " milis");
 
     }
