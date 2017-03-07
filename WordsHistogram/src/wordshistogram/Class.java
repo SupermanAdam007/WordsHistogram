@@ -31,6 +31,11 @@ public class Class {
         hist.addAll(file.getHist());
     }
 
+    public Class(ArrayList<OneFile> arrf, ArrayList<String> hist) {
+        this.files = arrf;
+        this.hist = hist;
+    }
+
     public boolean addFile(OneFile file) {
         boolean alreadyHere = !files.contains(file);
         if (alreadyHere) {
