@@ -27,6 +27,14 @@ public class Edge {
         return s;
     }
 
+    public ArrayList<String> getSame() {
+        return same;
+    }
+
+    public int getSizeOfSame() {
+        return same.size();
+    }
+
     public OneFile getFile1() {
         return file1;
     }

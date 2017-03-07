@@ -4,22 +4,21 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
+import static wordshistogram.WordsHistogram.printArrayList;
 
 /**
  *
  * @author Adam
  */
-public class FilesComparingManager {
+public class ComparingManager {
 
     private final Set<OneFile> myFiles;
     private final ArrayList<String[]> pairs;
     private final EdgesCollector edges;
 
-    public FilesComparingManager() {
+    public ComparingManager() {
         myFiles = new HashSet<>();
         pairs = new ArrayList<>();
         edges = new EdgesCollector();
@@ -37,7 +36,7 @@ public class FilesComparingManager {
                 //System.out.println(s);
             }
         }
-        System.out.println("Size of same text Array: " + same.size());
+        //System.out.println("Size of same text Array: " + same.size());
         return sortArrayList(same);
     }
 
@@ -88,14 +87,39 @@ public class FilesComparingManager {
     }
 
     public void startComparingEdges() {
-        for (Edge edge : edges.getEdges()) {
-            //System.out.println(edge.toString());
-            for (Edge edge1 : edges.getEdges()) {
-                if (!edge.equals(edge1)) {
-//                    System.out.println("-------------");
-//                    System.out.println("delam neco s edgema: " + edge.toString() + edge1.toString());
+        ArrayList<Edge> eds;
+        ArrayList<String> res;
+        //System.out.println("");
+        ArrayList<Class> classes = new ArrayList<>();
+
+        for (OneFile myFile : myFiles) {
+            Class cl = new Class(myFile);
+            classes.add(cl);
+
+            eds = edges.getEdgesOfFile(myFile);
+            //System.out.println("Edges for file: " + myFile.getFile().getName());
+
+            for (Edge ed : eds) {
+                if (ed.getSame().size() < 5) {
+                    continue;
+                }
+                //System.out.println(ed.toString());
+                for (Class clas : classes) {
+                    res = compareTwoHistograms(new HashSet<>(clas.getHist()), new HashSet<>(ed.getSame()));
+                    if (res.isEmpty()) {
+                        continue;
+                    }
+                    //printArrayList(res);
+                    System.out.println("res size = " + res.size());
+                    double perc = (double) res.size() / (double) clas.getHist().size();
+                    //System.out.println("perc = " + perc);
+                    if (clas.addFile(ed.getFile1()) || clas.addFile(ed.getFile2())) {
+                        clas.setHist(res);
+                        break;
+                    }
                 }
             }
+            cl.saveAllFiles();
         }
     }
 
@@ -103,7 +127,7 @@ public class FilesComparingManager {
 
         @Override
         public int compare(String o1, String o2) {
-            return o1.length() - o2.length();
+            return o2.length() - o1.length();
         }
     }
 

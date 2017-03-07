@@ -9,17 +9,18 @@ import java.util.ArrayList;
  */
 public class WordsHistogram {
 
+    public static String mainPath = "c:\\Users\\pavlat\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\";
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
-        String path = "c:\\Users\\pavlat\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\";
-        FilesManager fileMan = new FilesManager(new File(path));
-        FilesComparingManager fileCmpMan = new FilesComparingManager();
+        FilesManager fileMan = new FilesManager(new File(mainPath));
+        ComparingManager cmpMan = new ComparingManager();
 
-        System.out.println("Path: " + path);
+        System.out.println("Path: " + mainPath);
         System.out.println("Number of files: " + fileMan.getNumOfFiles());
         System.out.println("For fully connected graph is number of pairs: " + fileMan.getNumOfConnections());
 
@@ -29,7 +30,7 @@ public class WordsHistogram {
                 for (File f : fileMan.getFiles()) {
                     if (f.isFile()) {
                         System.out.println("file: " + f);
-                        fileCmpMan.add(f);
+                        cmpMan.add(f);
                     }
                 }
             }
@@ -37,8 +38,8 @@ public class WordsHistogram {
             e.printStackTrace();
         }
 
-        fileCmpMan.startComparingFilePairs();
-        fileCmpMan.startComparingEdges();
+        cmpMan.startComparingFilePairs();
+        cmpMan.startComparingEdges();
         System.out.println("Parsing files complete in time: " + (System.currentTimeMillis() - startTime) + " milis");
 
     }

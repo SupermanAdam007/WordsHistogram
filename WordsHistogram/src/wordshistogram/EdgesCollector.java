@@ -29,4 +29,14 @@ public class EdgesCollector {
         return edges;
     }
 
+    public ArrayList<Edge> getEdgesOfFile(OneFile f) {
+        ArrayList<Edge> res = new ArrayList<>();
+        for (Edge edge : edges) {
+            if (edge.containsFile(f)) {
+                res.add(edge);
+            }
+        }
+        return res;
+    }
+
 }
