@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import static wordshistogram.WordsHistogram.mainPath;
 
@@ -85,7 +83,27 @@ public class Class {
         }
 
         try {
-            FileWriter fw = new FileWriter(trueName + "wordsSet_" + files.size() + ".txt", true);
+            File f;
+            int i = 65;
+            String name;
+            String postfix = "";
+            String fullName = "";
+
+            while (true) {
+                name = Character.toString((char) i++);
+                if (name.equals("Z")) {
+                    postfix += "Z";
+                    i = 65;
+                    name = Character.toString((char) i++);
+                }
+                fullName = mainPath + "res\\" + "wordsSet_" + files.size() + postfix + name + ".txt";
+                f = new File(fullName);
+                if (!f.exists()) {
+                    break;
+                }
+            }
+
+            FileWriter fw = new FileWriter(fullName, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw);
             ArrayList<String> histSorted = ComparingManager.sortArrayList(hist);
@@ -101,9 +119,10 @@ public class Class {
     }
 
     public void saveAllFiles() {
+        new File(mainPath + "res\\").mkdir();
         /*trueName = mainPath + "res\\";
         new File(trueName).mkdir();*/
-        createFreeNameFolder();
+        //createFreeNameFolder();
         /*for (OneFile file : files) {
             try {
                 Files.copy(file.getFile().toPath(),

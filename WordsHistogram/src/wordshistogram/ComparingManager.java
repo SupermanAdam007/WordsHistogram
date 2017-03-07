@@ -92,6 +92,9 @@ public class ComparingManager {
         //System.out.println("");
         ArrayList<Class> classes = new ArrayList<>();
 
+        int prog = myFiles.size();
+        System.out.println("startComparingEdges ... files for analyze: " + prog);
+
         for (OneFile myFile : myFiles) {
             Class cl = new Class(myFile);
             classes.add(cl);
@@ -100,9 +103,6 @@ public class ComparingManager {
             //System.out.println("Edges for file: " + myFile.getFile().getName());
 
             for (Edge ed : eds) {
-                if (ed.getSame().size() < 5) {
-                    continue;
-                }
                 //System.out.println(ed.toString());
                 for (Class clas : classes) {
                     res = compareTwoHistograms(new HashSet<>(clas.getHist()), new HashSet<>(ed.getSame()));
@@ -110,16 +110,23 @@ public class ComparingManager {
                         continue;
                     }
                     //printArrayList(res);
-                    System.out.println("res size = " + res.size());
+                    //System.out.println("res size = " + res.size());
                     double perc = (double) res.size() / (double) clas.getHist().size();
                     //System.out.println("perc = " + perc);
+                    if (perc < 0.05) {
+                        continue;
+                    }
                     if (clas.addFile(ed.getFile1()) || clas.addFile(ed.getFile2())) {
                         clas.setHist(res);
                         break;
                     }
                 }
             }
-            cl.saveAllFiles();
+            System.out.println("startComparingEdges ... files for analyze: " + --prog);
+        }
+
+        for (Class classe : classes) {
+            classe.saveAllFiles();
         }
     }
 

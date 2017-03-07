@@ -9,7 +9,8 @@ import java.util.ArrayList;
  */
 public class WordsHistogram {
 
-    public static String mainPath = "c:\\Users\\pavlat\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\";
+    //public static String mainPath = "c:\\Users\\pavlat\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\";
+    public static String mainPath = "c:\\Users\\Adam\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\";
 
     /**
      * @param args the command line arguments
