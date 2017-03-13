@@ -39,4 +39,16 @@ public class EdgesCollector {
         return res;
     }
 
+    public Edge getEdge(OneFile f1, OneFile f2) {
+        if (f1.equals(f2)) {
+            return null;
+        }
+        for (Edge edge : edges) {
+            if (edge.containsFile(f1) && edge.containsFile(f2)) {
+                return edge;
+            }
+        }
+        return null;
+    }
+
 }

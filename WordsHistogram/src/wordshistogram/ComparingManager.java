@@ -87,51 +87,63 @@ public class ComparingManager {
     }
 
     public void startComparingEdges() {
-        ArrayList<Edge> eds;
-        ArrayList<String> res;
-        //System.out.println("");
-        ArrayList<Class> classes = new ArrayList<>();
-
-        int prog = myFiles.size();
-        System.out.println("startComparingEdges ... files for analyze: " + prog);
-
+        ArrayList<OneFile> arrFiles = new ArrayList<>();
         for (OneFile myFile : myFiles) {
-            Class cl = new Class(myFile);
-            classes.add(cl);
+            arrFiles.add(myFile);
+        }
+        ArrayList<ArrayList<OneFile>> res = new ArrayList<>();
 
-            eds = edges.getEdgesOfFile(myFile);
-            //System.out.println("Edges for file: " + myFile.getFile().getName());
-
-            for (Edge ed : eds) {
-                //System.out.println(ed.toString());
-                ArrayList<Class> newAddedClass = new ArrayList<>();
-                for (Class clas : classes) {
-                    res = compareTwoHistograms(new HashSet<>(clas.getHist()), new HashSet<>(ed.getSame()));
-                    if (res.isEmpty()) {
-                        continue;
-                    }
-                    //printArrayList(res);
-                    //System.out.println("res size = " + res.size());
-                    double perc = (double) res.size() / (double) clas.getHist().size();
-                    //System.out.println("perc = " + perc);
-                    /*if (perc < 0.05) {
-                        continue;
-                    }*/
-                    if (clas.addFile(ed.getFile1()) || clas.addFile(ed.getFile2())) {
-                        newAddedClass.add(new Class(clas.getFiles(), clas.getHist()));
-                        clas.setHist(res);
-                        break;
-                    }
-                }
-                classes.addAll(newAddedClass);
+        String bin;
+        int maxLen = Integer.toBinaryString((int) Math.pow(2, myFiles.size() - 1)).length();
+        for (int i = 1; i < Math.pow(2, myFiles.size()); i++) {
+            bin = Integer.toBinaryString(i);
+            while (bin.length() != maxLen) {
+                bin = "0" + bin;
             }
-            System.out.println("startComparingEdges ... files for analyze: " + --prog);
-            System.out.println("   - num of classes: " + classes.size());
+            ArrayList<OneFile> ress = new ArrayList<>();
+//            System.out.println("bin = " + bin);
+            for (int j = 0; j < maxLen; j++) {
+                if (bin.charAt(j) == '1') {
+                    ress.add(arrFiles.get(j));
+                }
+            }
+//            System.out.println(ress.toString());
+            res.add(ress);
         }
 
+        ArrayList<Class> classes = new ArrayList<>();
+
+        System.out.println("");
+        double progress = 1;
+        for (ArrayList<OneFile> re : res) {
+            String strProgress = String.valueOf((double) 100 * progress++ / Math.pow(2, myFiles.size()));
+            System.out.println("Progress: " + strProgress.substring(0, Math.min(4, strProgress.length())) + " %");
+            for (OneFile oneFile : re) {
+                //System.out.print(oneFile.getFile().getName().substring(0, 5) + "-");
+            }
+            //System.out.println("");
+
+            Class cl = new Class(re.get(0));
+            if (re.size() != 1) {
+                ArrayList<String> hist;
+                for (int i = 1; i < re.size(); i++) {
+                    hist = compareTwoHistograms(new HashSet<>(cl.getHist()),
+                            re.get(i).getHist());
+                    cl.setHist(hist);
+                    cl.addFile(re.get(i));
+                }
+            }
+            if (cl.getHist().size() > 10) {
+                classes.add(cl);
+            }
+        }
+
+        System.out.println("Saving files...");
         for (Class classe : classes) {
             classe.saveAllFiles();
         }
+        System.out.println("Complete");
+        //System.out.println("len = " + res.size());
     }
 
     public static class CustomComparator implements Comparator<String> {
