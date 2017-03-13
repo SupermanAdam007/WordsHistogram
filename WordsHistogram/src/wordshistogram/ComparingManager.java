@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
-import static wordshistogram.WordsHistogram.printArrayList;
 
 /**
  *
@@ -144,6 +143,10 @@ public class ComparingManager {
         }
         System.out.println("Complete");
         //System.out.println("len = " + res.size());
+    }
+
+    public Set<OneFile> getMyFiles() {
+        return myFiles;
     }
 
     public static class CustomComparator implements Comparator<String> {

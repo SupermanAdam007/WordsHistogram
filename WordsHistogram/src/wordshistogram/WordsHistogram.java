@@ -9,7 +9,8 @@ import java.util.ArrayList;
  */
 public class WordsHistogram {
 
-    public static String mainPath = "c:\\Users\\pavlat\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\";
+//    public static String mainPath = "c:\\Users\\pavlat\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\";
+    public static String mainPath = "c:\\Users\\Adam\\Documents\\NetBeansProjects\\WordsHistogram\\WordsHistogram\\files\\";
 
     /**
      * @param args the command line arguments
@@ -41,6 +42,8 @@ public class WordsHistogram {
         //cmpMan.startComparingFilePairs();
         cmpMan.startComparingEdges();
         System.out.println("Parsing files complete in time: " + (System.currentTimeMillis() - startTime) + " milis");
+
+        ToVis tv = new ToVis(new ArrayList<>(cmpMan.getMyFiles()));
 
     }
 
