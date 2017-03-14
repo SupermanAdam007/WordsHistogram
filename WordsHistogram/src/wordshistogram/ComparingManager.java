@@ -16,11 +16,13 @@ public class ComparingManager {
     private final Set<OneFile> myFiles;
     private final ArrayList<String[]> pairs;
     private final EdgesCollector edges;
+    private final ArrayList<Class> classes;
 
     public ComparingManager() {
         myFiles = new HashSet<>();
         pairs = new ArrayList<>();
         edges = new EdgesCollector();
+        classes = new ArrayList<>();
     }
 
     public void add(File f) {
@@ -30,7 +32,13 @@ public class ComparingManager {
     public static ArrayList<String> compareTwoHistograms(Set<String> hist1, Set<String> hist2) {
         ArrayList<String> same = new ArrayList<>();
         for (String s : hist1) {
-            if (hist2.contains(s)) {
+            if (hist2.contains(s) && !same.contains(s)) {
+                same.add(s);
+                //System.out.println(s);
+            }
+        }
+        for (String s : hist2) {
+            if (hist1.contains(s) && !same.contains(s)) {
                 same.add(s);
                 //System.out.println(s);
             }
@@ -110,16 +118,14 @@ public class ComparingManager {
             res.add(ress);
         }
 
-        ArrayList<Class> classes = new ArrayList<>();
-
         System.out.println("");
         double progress = 1;
         for (ArrayList<OneFile> re : res) {
             String strProgress = String.valueOf((double) 100 * progress++ / Math.pow(2, myFiles.size()));
             System.out.println("Progress: " + strProgress.substring(0, Math.min(4, strProgress.length())) + " %");
-            for (OneFile oneFile : re) {
-                //System.out.print(oneFile.getFile().getName().substring(0, 5) + "-");
-            }
+//            for (OneFile oneFile : re) {
+//            System.out.print(oneFile.getFile().getName().substring(0, 5) + "-");
+//            }
             //System.out.println("");
 
             Class cl = new Class(re.get(0));
@@ -137,6 +143,14 @@ public class ComparingManager {
             }
         }
 
+        ArrayList<Class> toRemove = new ArrayList<>();
+        for (Class cl : classes) {
+            if (cl.getFiles().size() == 1) {
+                toRemove.add(cl);
+            }
+        }
+        classes.removeAll(toRemove);
+
         System.out.println("Saving files...");
         for (Class classe : classes) {
             classe.saveAllFiles();
@@ -145,8 +159,8 @@ public class ComparingManager {
         //System.out.println("len = " + res.size());
     }
 
-    public Set<OneFile> getMyFiles() {
-        return myFiles;
+    public ArrayList<Class> getClasses() {
+        return classes;
     }
 
     public static class CustomComparator implements Comparator<String> {

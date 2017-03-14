@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,14 +32,30 @@ public class HistogramNoCount {
             buffr = new BufferedReader(new FileReader(f));
             String line;
             String[] split;
-            int[] len = new int[]{5, 8, 9, 10, 13, 15, 20, 25, 30, 40};
-            //int[] len = new int[]{5, 10, 20, 40};
+//            int[] len = new int[]{10};
+            int[] len = new int[]{5, 6, 7, 8, 10, 20};
+            ArrayList<String> blackList = getBlackList();
+            boolean blackListed = false;
+
             while ((line = buffr.readLine()) != null) { //every row from 4 to 10 letters substrings
                 line = line.toUpperCase();
                 for (int i : len) {
                     for (int j = 0; j < line.length() - i; j += i) {
                         for (int k = 0; k < i / 2; k++) {
                             String resResLine = line.substring(Math.max(j + k, 0), Math.min(j + i + k, line.length())).trim();
+                            blackListed = false;
+                            for (String s : blackList) {
+                                if (resResLine.contains(s)) {
+                                    blackListed = true;
+                                    break;
+                                }
+                            }
+                            if (blackListed || resResLine.replace(" ", "").length() < len[0]) {
+                                continue;
+                            }
+//                            if (blackListed || !resResLine.replaceAll("\\p{C}", "?").equals(resResLine)) {
+//                                continue;
+//                            }
                             String resLine;
                             //System.out.println(resResLine);
                             if (((resLine = resResLine).length() >= len[0]) & !hist.contains(resLine)) {
@@ -76,5 +93,24 @@ public class HistogramNoCount {
 
     public Set<String> getHist() {
         return hist;
+    }
+
+    private ArrayList<String> getBlackList() {
+        ArrayList<String> blackList = new ArrayList<>();
+        blackList.add("CTIO");
+        blackList.add("TION");
+        blackList.add("ION ");
+        blackList.add("FUNC");
+        blackList.add("TRIN");
+        blackList.add("STRI");
+        blackList.add("RING");
+        blackList.add("ETUR");
+        blackList.add("DEFI");
+        blackList.add("NUMB");
+        blackList.add("UMBE");
+        blackList.add("VAR ");
+        blackList.add("�");
+        blackList.add("MANIF");
+        return blackList;
     }
 }

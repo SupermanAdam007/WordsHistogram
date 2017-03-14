@@ -19,6 +19,7 @@ public class Class {
     private final ArrayList<OneFile> files;
     private ArrayList<String> hist;
     private String trueName;
+    private String label;
 
     public Class() {
         files = new ArrayList<>();
@@ -115,6 +116,8 @@ public class Class {
                 }
             }
 
+            this.label = files.size() + postfix + name;
+
             FileWriter fw = new FileWriter(fullName, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw);
@@ -147,4 +150,9 @@ public class Class {
         //System.out.println("Size of hist Class: " + hist.size());
         saveHistToFile();
     }
+
+    public String getLabel() {
+        return label;
+    }
+
 }
