@@ -33,7 +33,7 @@ public class HistogramNoCount {
             String line;
             String[] split;
 //            int[] len = new int[]{10};
-            int[] len = new int[]{5, 6, 7, 8, 10, 20};
+            int[] len = new int[]{4, 5, 6, 7, 10, 15, 20};
             ArrayList<String> blackList = getBlackList();
             boolean blackListed = false;
 
@@ -53,9 +53,7 @@ public class HistogramNoCount {
                             if (blackListed || resResLine.replace(" ", "").length() < len[0]) {
                                 continue;
                             }
-//                            if (blackListed || !resResLine.replaceAll("\\p{C}", "?").equals(resResLine)) {
-//                                continue;
-//                            }
+
                             String resLine;
                             //System.out.println(resResLine);
                             if (((resLine = resResLine).length() >= len[0]) & !hist.contains(resLine)) {
@@ -111,6 +109,15 @@ public class HistogramNoCount {
         blackList.add("VAR ");
         blackList.add("�");
         blackList.add("MANIF");
+        blackList.add("ENT-TYP");
+        blackList.add("NTEN");
+        blackList.add("CONT");
+        blackList.add("EXT/HTM");
+        blackList.add("TYPE");
+        blackList.add("TEXT");
+        blackList.add("OCUMEN");
+        blackList.add("AVASC");
+        blackList.add("HTML");
         return blackList;
     }
 }

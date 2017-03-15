@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import static wordshistogram.WordsHistogram.mainPath;
 
@@ -38,6 +36,20 @@ public class Class {
         files = new ArrayList<>();
         hist = new ArrayList<>();
         files.addAll(newFiles);
+    }
+
+    @Override
+    public String toString() {
+        return "{Class: files-size: " + files.size()
+                + ", hist-size: " + hist.size();
+    }
+
+    public boolean equals(Class cl) {
+        return cl.getFiles().equals(this.files) && cl.getHist().equals(this.hist);
+    }
+
+    public boolean isGreater(Class cl) {
+        return cl.getHist().size() >= this.hist.size();
     }
 
     public boolean addFile(OneFile file) {
@@ -91,9 +103,6 @@ public class Class {
     }
 
     public void saveHistToFile() {
-        if (files.isEmpty() || hist.size() < 10) {
-            return;
-        }
 
         try {
             File f;

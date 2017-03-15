@@ -15,9 +15,9 @@ public class EdgesCollector {
     }
 
     public void addEdge(OneFile file1, OneFile file2, ArrayList<String> same) {
-        System.out.println("Adding edge:");
-        System.out.println(" File 1: " + file1.getFile().getName());
-        System.out.println(" File 2: " + file2.getFile().getName());
+//        System.out.println("Adding edge:");
+//        System.out.println(" File 1: " + file1.getFile().getName());
+//        System.out.println(" File 2: " + file2.getFile().getName());
         this.edges.add(new Edge(file1, file2, same));
     }
 

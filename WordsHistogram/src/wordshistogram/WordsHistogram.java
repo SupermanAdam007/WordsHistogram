@@ -39,7 +39,7 @@ public class WordsHistogram {
             e.printStackTrace();
         }
 
-        //cmpMan.startComparingFilePairs();
+        cmpMan.startComparingFilePairs();
         cmpMan.startComparingEdges();
         System.out.println("Parsing files complete in time: " + (System.currentTimeMillis() - startTime) + " milis");
 
