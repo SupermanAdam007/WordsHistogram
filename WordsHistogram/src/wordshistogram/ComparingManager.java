@@ -207,7 +207,7 @@ public class ComparingManager {
             tmpClass.addAllFiles(cl.getFiles());
             for (Class cl1 : classes) {
                 if (cl1.equals(cl) || (tmpClass.getFiles().size() == cl1.getFiles().size()
-                        && tmpClass.isGreater(cl1))) {
+                        && cl1.isGreater(tmpClass))) {
                     skip = true;
 //                    System.out.println("===== rem is true");
                     break;

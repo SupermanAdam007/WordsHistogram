@@ -33,7 +33,7 @@ public class HistogramNoCount {
             String line;
             String[] split;
 //            int[] len = new int[]{10};
-            int[] len = new int[]{4, 5, 6, 7, 10, 15, 20};
+            int[] len = new int[]{5, 7, 10, 15, 20};
             ArrayList<String> blackList = getBlackList();
             boolean blackListed = false;
 
