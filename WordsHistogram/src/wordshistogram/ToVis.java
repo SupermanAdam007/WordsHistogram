@@ -25,14 +25,14 @@ public class ToVis {
         int j = 1;
         int numOfCl = classes.size();
         for (Class cl : classes) {
-            s += packNode(i++, cl.getFiles().size(), "Class " + cl.getLabel());
+            s += packNode(i++, cl.getFiles().size() * 2, "Class " + cl.getLabel(), "dot");
             for (OneFile f : cl.getFiles()) {
 //                s += packNode(j++ + numOfCl, f.getHist().size(), f.getFile().getName().substring(0, 5));
                 if (this.mappedFiles.keySet().contains(f)) {
                     continue;
                 }
 
-                s += packNode(j++ + numOfCl, 1, "File " + f.getFile().getName().substring(0, 5) + "..");
+                s += packNode(j++ + numOfCl, 1, "File " + f.getFile().getName().substring(0, 5) + "..", "box");
                 this.mappedFiles.put(f, j++ + numOfCl);
             }
         }
@@ -40,8 +40,8 @@ public class ToVis {
         return s;
     }
 
-    public String packNode(int id, int value, String label) {
-        return "{id: " + id + ", value: " + value + ", label: \'" + label + "\'},\n";
+    public String packNode(int id, int value, String label, String shape) {
+        return "{id: " + id + ", value: " + value + ", label: \'" + label + "\', shape: \'" + shape + "\'},\n";
     }
 
     public String strEdges() {
@@ -50,12 +50,29 @@ public class ToVis {
         for (int i = 0; i < classes.size(); i++) {
             for (OneFile f : classes.get(i).getFiles()) {
                 s += packEdge(this.mappedFiles.get(f) - 1, (i + 1),
-                        f.getHist().size(),
-                        classes.get(i).getHist().get(0).replace("\'", "\\\'").replace("\"", "\\\""));
+                        classes.get(i).getHist().size(),
+                        getFewHistData(classes.get(i).getHist()));
             }
         }
         s += "];";
         return s;
+    }
+
+    private String getFewHistData(ArrayList<String> hist) {
+        String res = "";
+        int maxItems = 8;
+        if (hist.size() < maxItems) {
+            for (String s : hist) {
+                res += s + ", ";
+            }
+        } else {
+            for (int i = 0; i < maxItems; i++) {
+                res += hist.get(i) + ", ";
+            }
+            res += "..., ";
+        }
+        res = res.substring(0, res.length() - 2);
+        return res.replace("\'", "\\\'").replace("\"", "\\\"");
     }
 
     public String packEdge(int from, int to, int value, String title) {

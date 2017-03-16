@@ -31,13 +31,12 @@ public class HistogramNoCount {
         try {
             buffr = new BufferedReader(new FileReader(f));
             String line;
-            String[] split;
 //            int[] len = new int[]{10};
-            int[] len = new int[]{5, 7, 10, 15, 20};
+            int[] len = new int[]{4, 5, 6, 7, 8, 9, 10, 15, 20, 30};
             ArrayList<String> blackList = getBlackList();
-            boolean blackListed = false;
+            boolean blackListed;
 
-            while ((line = buffr.readLine()) != null) { //every row from 4 to 10 letters substrings
+            while ((line = buffr.readLine()) != null) {
                 line = line.toUpperCase();
                 for (int i : len) {
                     for (int j = 0; j < line.length() - i; j += i) {
@@ -53,12 +52,7 @@ public class HistogramNoCount {
                             if (blackListed || resResLine.replace(" ", "").length() < len[0]) {
                                 continue;
                             }
-
-                            String resLine;
-                            //System.out.println(resResLine);
-                            if (((resLine = resResLine).length() >= len[0]) & !hist.contains(resLine)) {
-                                hist.add(resLine);
-                            }
+                            hist.add(resResLine);
                         }
                     }
                 }
@@ -99,6 +93,8 @@ public class HistogramNoCount {
         blackList.add("TION");
         blackList.add("ION ");
         blackList.add("FUNC");
+        blackList.add("UNCTI");
+        blackList.add("UNCT");
         blackList.add("TRIN");
         blackList.add("STRI");
         blackList.add("RING");
@@ -118,6 +114,11 @@ public class HistogramNoCount {
         blackList.add("OCUMEN");
         blackList.add("AVASC");
         blackList.add("HTML");
+        blackList.add("CRIP");
+        blackList.add("SCRI");
+        blackList.add("TURN");
+        blackList.add("RETU");
+        blackList.add("RIPT");
         return blackList;
     }
 }

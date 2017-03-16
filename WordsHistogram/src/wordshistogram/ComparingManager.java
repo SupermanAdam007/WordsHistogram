@@ -137,7 +137,7 @@ public class ComparingManager {
         ArrayList<String> bins = new ArrayList<>();
         String bin;
         int maxLen = Integer.toBinaryString((int) Math.pow(2, myFiles.size() - 1)).length();
-        for (int i = (int) Math.pow(2, myFiles.size()) - 1; i > 1; i--) {
+        for (int i = 1; i < (int) Math.pow(2, myFiles.size()); i++) {
             bin = Integer.toBinaryString(i);
 //            System.out.println(bin);
             while (bin.length() < maxLen) {
@@ -177,8 +177,6 @@ public class ComparingManager {
 
             Class cl = new Class();
 
-            ArrayList<OneFile> locking = new ArrayList<>();
-
             for (Edge edge : edgesNow) {
                 if (cl.getFiles().isEmpty()) {
                     cl.addFile(edge.getFile1());
@@ -189,8 +187,6 @@ public class ComparingManager {
                     cl.addFile(edge.getFile2());
                     cl.setHist(getCommonElements(cl.getHist(), edge.getSame()));
                 }
-                locking.add(edge.getFile1());
-                locking.add(edge.getFile2());
                 re.remove(edge.getFile1());
                 re.remove(edge.getFile2());
             }
@@ -205,9 +201,10 @@ public class ComparingManager {
             boolean skip = false;
             Class tmpClass = new Class();
             tmpClass.addAllFiles(cl.getFiles());
+
             for (Class cl1 : classes) {
-                if (cl1.equals(cl) || (tmpClass.getFiles().size() == cl1.getFiles().size()
-                        && cl1.isGreater(tmpClass))) {
+                if (tmpClass.getFiles().size() == cl1.getFiles().size()
+                        && cl1.isGreater(tmpClass)) {   // vs tmpClass.isGreater(cl1)) {
                     skip = true;
 //                    System.out.println("===== rem is true");
                     break;
@@ -218,7 +215,7 @@ public class ComparingManager {
                 continue;
             }
 
-            System.out.println("class size = " + classes.size());
+            System.out.println("classes size = " + classes.size());
             System.out.println(cl.toString());
             classes.add(cl);
         }
@@ -230,7 +227,6 @@ public class ComparingManager {
 //            }
 //        }
 //        classes.removeAll(toRemove);
-
         System.out.println("Saving files...");
         for (Class classe : classes) {
             classe.saveAllFiles();

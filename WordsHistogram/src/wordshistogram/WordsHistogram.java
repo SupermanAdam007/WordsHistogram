@@ -43,7 +43,7 @@ public class WordsHistogram {
         cmpMan.startComparingEdges();
         System.out.println("Parsing files complete in time: " + (System.currentTimeMillis() - startTime) + " milis");
 
-        ToVis tv = new ToVis(cmpMan.getClasses());
+        //ToVis tv = new ToVis(cmpMan.getClasses());
 
     }
 

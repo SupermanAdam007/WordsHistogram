@@ -49,7 +49,7 @@ public class Class {
     }
 
     public boolean isGreater(Class cl) {
-        return cl.getHist().size() >= this.hist.size();
+        return cl.getHist().size() > this.hist.size();
     }
 
     public boolean addFile(OneFile file) {
