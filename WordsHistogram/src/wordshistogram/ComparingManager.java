@@ -137,7 +137,7 @@ public class ComparingManager {
         ArrayList<String> bins = new ArrayList<>();
         String bin;
         int maxLen = Integer.toBinaryString((int) Math.pow(2, myFiles.size() - 1)).length();
-        for (int i = 1; i < (int) Math.pow(2, myFiles.size()); i++) {
+        for (int i = 0; i < (int) Math.pow(2, myFiles.size()); i++) {
             bin = Integer.toBinaryString(i);
 //            System.out.println(bin);
             while (bin.length() < maxLen) {
@@ -160,8 +160,8 @@ public class ComparingManager {
         int bini = 0;
         int binTmp;
         for (ArrayList<OneFile> re : res) {
-//            String strProgress = String.valueOf((double) 100 * progress++ / Math.pow(2, myFiles.size()));
-//            System.out.println("-Progress: " + strProgress.substring(0, Math.min(4, strProgress.length())) + " %");
+            String strProgress = String.valueOf((double) 100 * progress++ / Math.pow(2, myFiles.size()));
+            System.out.println("-Progress: " + strProgress.substring(0, Math.min(4, strProgress.length())) + " %");
 
             ArrayList<Edge> edgesNow = new ArrayList<>();
             binTmp = bins.get(bini++).split("1", -1).length - 1;
@@ -202,21 +202,25 @@ public class ComparingManager {
             Class tmpClass = new Class();
             tmpClass.addAllFiles(cl.getFiles());
 
+            ArrayList<Class> toRemove = new ArrayList<>();
             for (Class cl1 : classes) {
                 if (tmpClass.getFiles().size() == cl1.getFiles().size()
-                        && cl1.isGreater(tmpClass)) {   // vs tmpClass.isGreater(cl1)) {
-                    skip = true;
+                        && tmpClass.isGreater(cl1)) {   // vs tmpClass.isGreater(cl1)) {
+//                    skip = true;
 //                    System.out.println("===== rem is true");
-                    break;
+                    toRemove.add(cl1);
+//                    break;
                 }
             }
 
-            if (skip || cl.getHist().isEmpty()) {
+            classes.removeAll(toRemove);
+
+            if (/*skip ||*/ cl.getHist().isEmpty()) {
                 continue;
             }
 
-            System.out.println("classes size = " + classes.size());
-            System.out.println(cl.toString());
+//            System.out.println("classes size = " + classes.size());
+//            System.out.println(cl.toString());
             classes.add(cl);
         }
 
